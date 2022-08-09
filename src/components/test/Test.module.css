@@ -1,0 +1,3 @@
+.something {
+  @apply border-2 flex border-dashed;
+}
