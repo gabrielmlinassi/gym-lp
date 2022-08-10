@@ -12,7 +12,7 @@ const FbIcon = () => {
         fill="#3D6AD6"
       />
     </svg>
-  )
-}
+  );
+};
 
-export { FbIcon }
+export { FbIcon };

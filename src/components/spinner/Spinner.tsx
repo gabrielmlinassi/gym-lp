@@ -1,7 +1,7 @@
-import { SVGProps } from 'react'
-import { twMerge } from 'tailwind-merge'
+import { SVGProps } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-twMerge
+twMerge;
 
 const Spinner = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
   return (
@@ -24,7 +24,7 @@ const Spinner = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
         fill="currentFill"
       ></path>
     </svg>
-  )
-}
+  );
+};
 
-export default Spinner
+export default Spinner;

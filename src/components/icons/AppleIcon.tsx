@@ -16,7 +16,7 @@ const AppleIcon = () => {
         fill="white"
       />
     </svg>
-  )
-}
+  );
+};
 
-export { AppleIcon }
+export { AppleIcon };

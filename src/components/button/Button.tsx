@@ -1,16 +1,16 @@
-import s from './Button.module.css'
-import React from 'react'
-import cn from 'classnames'
-import Spinner from 'components/spinner'
+import s from './Button.module.css';
+import React from 'react';
+import cn from 'classnames';
+import Spinner from 'components/spinner';
 
 type ButtonProps = {
-  children: React.ReactNode
-  fullWidth?: boolean
-  loading?: boolean
-  variant?: 'filled' | 'outlined'
-  color?: 'primary' | 'secondary'
-  size?: 'base' | 'lg'
-} & Omit<React.ComponentProps<'button'>, 'className'>
+  children: React.ReactNode;
+  fullWidth?: boolean;
+  loading?: boolean;
+  variant?: 'filled' | 'outlined';
+  color?: 'primary' | 'secondary';
+  size?: 'base' | 'lg';
+} & Omit<React.ComponentProps<'button'>, 'className'>;
 
 const Button = ({
   children,
@@ -24,7 +24,7 @@ const Button = ({
 }: ButtonProps) => {
   const classes = cn(s.root, s[variant], s[color], s[size], {
     [s.fullWidth]: fullWidth,
-  })
+  });
 
   return (
     <button className={classes} disabled={disabled || loading} {...props}>
@@ -35,7 +35,7 @@ const Button = ({
         </span>
       )}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
