@@ -13,16 +13,20 @@ type ButttonIconProps = {
   children: React.ReactNode;
 } & (AsButton | AsSlot);
 
-const ButtonIcon = ({ children, asChild, ...props }: ButttonIconProps) => {
-  const Comp = asChild ? Slot : 'button';
-  return (
-    <Comp
-      className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#4A5465] bg-[#252932]"
-      {...props}
-    >
-      {children}
-    </Comp>
-  );
-};
+const ButtonIcon = React.forwardRef<any, ButttonIconProps>(
+  ({ children, asChild, ...props }, forwardedRef) => {
+    const Comp = asChild ? Slot : 'button';
+    return (
+      <Comp
+        ref={forwardedRef}
+        className="flex h-12 w-12 items-center justify-center rounded-lg border border-[#4A5465] bg-[#252932]"
+        {...props}
+      >
+        {children}
+      </Comp>
+    );
+  }
+);
 
+ButtonIcon.displayName = 'ButtonIcon';
 export default ButtonIcon;

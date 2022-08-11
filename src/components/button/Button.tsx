@@ -12,30 +12,41 @@ type ButtonProps = {
   size?: 'base' | 'lg';
 } & Omit<React.ComponentProps<'button'>, 'className'>;
 
-const Button = ({
-  children,
-  variant = 'filled',
-  color = 'primary',
-  size = 'base',
-  fullWidth,
-  loading,
-  disabled,
-  ...props
-}: ButtonProps) => {
-  const classes = cn(s.root, s[variant], s[color], s[size], {
-    [s.fullWidth]: fullWidth,
-  });
+const Button = React.forwardRef<any, ButtonProps>(
+  (
+    {
+      children,
+      variant = 'filled',
+      color = 'primary',
+      size = 'base',
+      fullWidth,
+      loading,
+      disabled,
+      ...props
+    },
+    forwardedRef
+  ) => {
+    const classes = cn(s.root, s[variant], s[color], s[size], {
+      [s.fullWidth]: fullWidth,
+    });
 
-  return (
-    <button className={classes} disabled={disabled || loading} {...props}>
-      {children}
-      {loading && (
-        <span className="ml-1.5">
-          <Spinner className={s.spinner} />
-        </span>
-      )}
-    </button>
-  );
-};
+    return (
+      <button
+        ref={forwardedRef}
+        className={classes}
+        disabled={disabled || loading}
+        {...props}
+      >
+        {children}
+        {loading && (
+          <span className="ml-1.5">
+            <Spinner className={s.spinner} />
+          </span>
+        )}
+      </button>
+    );
+  }
+);
 
+Button.displayName = 'Button';
 export default Button;
