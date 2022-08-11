@@ -6,4 +6,25 @@
   * {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   }
+
+  @font-face {
+    font-family: 'Industry';
+    src: url('/fonts/industry-600.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Proxima Nova';
+    src: url('/fonts/proxima-nova-600.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Proxima Nova';
+    src: url('/fonts/proxima-nova-400.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+  }
 }
