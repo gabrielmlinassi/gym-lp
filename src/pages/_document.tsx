@@ -26,7 +26,7 @@ export default function Document() {
           crossOrigin="anonymous"
         />
       </Head>
-      <body className="font-Inter bg-white text-black">
+      <body className="bg-[#252932]">
         <Main />
         <NextScript />
       </body>
