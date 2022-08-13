@@ -12,7 +12,7 @@ type ButtonProps = {
 } & React.ComponentProps<'button'>;
 
 const s = {
-  root: /*tw:*/ `inline-flex items-center justify-center rounded-full font-semibold duration-150 disabled:pointer-events-none disabled:opacity-75`,
+  root: /*tw:*/ `inline-flex items-center justify-center h-fit rounded-full font-semibold duration-150 disabled:pointer-events-none disabled:opacity-75`,
   fullWidth: /*tw:*/ `w-full`,
   variants: {
     'filled.primary': /*tw:*/ `bg-[#FAA806] text-[#FFFFFF] hover:bg-[#EE9F04]`,
