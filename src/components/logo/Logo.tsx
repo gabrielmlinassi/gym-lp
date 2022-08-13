@@ -1,4 +1,6 @@
 import NextImage from 'next/image';
+import NextLink from 'next/link';
+
 import LogoMark from '/public/logos/logo-mark.svg';
 import LogoFull from '/public/logos/logo-full.svg';
 
@@ -22,9 +24,21 @@ type LogoProps = {} & (MarkOnly | FullOnly);
 const Logo = ({ variant = 'mark', size = 'base' }: LogoProps) => {
   switch (variant) {
     case 'mark':
-      return <NextImage src={LogoMark} width={WidthBySize[size]} />;
+      return (
+        <NextLink href="/">
+          <a>
+            <NextImage src={LogoMark} width={WidthBySize[size]} />
+          </a>
+        </NextLink>
+      );
     case 'full':
-      return <NextImage src={LogoFull} />;
+      return (
+        <NextLink href="/">
+          <a>
+            <NextImage src={LogoFull} />
+          </a>
+        </NextLink>
+      );
   }
 };
 
