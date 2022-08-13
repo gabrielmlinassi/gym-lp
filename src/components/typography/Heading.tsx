@@ -8,10 +8,10 @@ type HeadingProps = {
 };
 
 const s = {
-  root: /*tw:*/ `font-industry font-semibold uppercase leading-none`,
-  h1: /*tw:*/ `text-[64px] text-[#F8F8F9]`,
-  h2: /*tw:*/ `text-5xl text-white`,
-  h3: /*tw:*/ `text-[32px] text-white`,
+  root: /*tw:*/ `font-industry font-semibold uppercase text-white`,
+  h1: /*tw:*/ `text-5xl md:text-[64px] leading-[1.08] text-[#F8F8F9]`,
+  h2: /*tw:*/ `text-[32px] leading-tight md:text-5xl md:leading-[1.08]`,
+  h3: /*tw:*/ `text-[22px] leading-snug md:text-[32px] md:leading-tight `,
 };
 
 const getComp = (variant: HeadingProps['variant']) => {
