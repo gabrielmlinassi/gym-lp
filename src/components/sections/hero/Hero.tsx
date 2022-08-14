@@ -23,7 +23,7 @@ const Hero = () => {
           </Text>
         </div>
         <div className="col-start-1 mt-8">
-          <SigninDialog onOpenChange={(open) => router.push({}, open ? '/signin' : '')}>
+          <SigninDialog onOpenChange={(open) => router.push({}, open ? '/signup' : '')}>
             <Button>Start free trial</Button>
           </SigninDialog>
         </div>
