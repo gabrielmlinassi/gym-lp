@@ -5,8 +5,6 @@ const StatsIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="43"
-      height="43"
       viewBox="0 0 43 43"
       fill="none"
       className={twMerge('h-6 w-6 text-[#FAA806]', className)}

@@ -30,9 +30,9 @@ const Review = () => {
           </Text>
         </div>
       </Container>
-      <div className="mt-20 h-[200px] bg-[#373E4B]">
+      <div className="mt-20 bg-[#373E4B] py-14">
         <Container variant="inner" className="h-full">
-          <div className="flex h-full items-center justify-center gap-16">
+          <div className="flex h-full flex-wrap items-center justify-center gap-8 sm:flex-nowrap md:gap-16">
             <NextImage src={logoNcaa} />
             <NextImage src={logoNfl} />
             <NextImage src={logoMll} />
@@ -64,7 +64,6 @@ const Review = () => {
           </div>
         </Container>
       </div>
-      <div className="h-44"></div>
     </>
   );
 };

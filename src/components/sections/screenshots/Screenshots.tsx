@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NextImage from 'next/image';
+import cn from 'classnames';
 
 import Container from 'components/container';
 import { Heading, Text } from 'components/typography';
@@ -18,49 +19,89 @@ const Screens = {
 };
 
 const Screenshots = () => {
-  const [activeId, setActiveId] = useState<1 | 2 | 3>(1);
+  const [activeIdx, setActiveIdx] = useState<1 | 2 | 3>(1);
+  const [activeDotIdx, setActiveDotIdx] = useState(-1);
+
+  useEffect(() => {
+    const options = {
+      root: document.querySelector('.carousel'),
+      threshold: 0.7,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveDotIdx((idx) => {
+            const newIdx = entry.boundingClientRect.x >= 0 ? idx + 1 : idx - 1;
+            return newIdx % 2;
+          });
+        }
+      });
+    }, options);
+
+    document.querySelectorAll('.carousel .slide').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Container variant="inner">
       <div className="mt-32 flex flex-col-reverse gap-8 md:flex-row">
-        <div className="w-[475px] space-y-12">
+        <div className="space-y-12 sm:w-[300px] md:w-[475px]">
           {data.map(({ heading, text, id }, i) => (
             <div
               key={i}
               className="cursor-pointer select-none"
-              onClick={() => setActiveId(id)}
+              onClick={() => setActiveIdx(id)}
             >
               <Heading
                 variant="h3"
-                className={id === activeId ? 'text-white' : 'text-[#4A5465]'}
+                className={id === activeIdx ? 'text-white' : 'text-[#4A5465]'}
               >
                 {heading}
               </Heading>
               <Text
                 size="md"
-                className={id === activeId ? 'text-[#CCD4E2]' : 'text-[#4A5465]'}
+                className={id === activeIdx ? 'text-[#CCD4E2]' : 'text-[#4A5465]'}
               >
                 {text}
               </Text>
             </div>
           ))}
         </div>
-        <div className="flex h-[600px] md:grow">
-          <div className="relative w-[300px] flex-shrink-0 md:w-full md:flex-shrink">
-            <NextImage
-              src={Screens[activeId][0]}
-              layout="fill"
-              objectFit="contain"
-              sizes="350px"
-            />
+        <div className="grow">
+          <div className="carousel -mr-4 flex h-[600px] snap-x snap-mandatory overflow-auto md:mr-0 md:grow">
+            <div className="slide relative w-[300px] flex-shrink-0 snap-start md:w-full md:flex-shrink">
+              <NextImage
+                src={Screens[activeIdx][0]}
+                quality={100}
+                layout="fill"
+                objectFit="contain"
+                sizes="350px"
+              />
+            </div>
+            <div className="slide relative mr-4 w-[300px] flex-shrink-0 snap-start md:mr-0 md:w-full md:flex-shrink">
+              <NextImage
+                src={Screens[activeIdx][1]}
+                quality={100}
+                layout="fill"
+                objectFit="contain"
+                sizes="350px"
+              />
+            </div>
           </div>
-          <div className="relative w-[300px] flex-shrink-0 md:w-full md:flex-shrink">
-            <NextImage
-              src={Screens[activeId][1]}
-              layout="fill"
-              objectFit="contain"
-              sizes="350px"
-            />
+          <div className="mt-4 flex items-center justify-center gap-2 md:hidden">
+            {Object.values(Screens[activeIdx]).map((_, i) => (
+              <div
+                key={i}
+                className={cn([
+                  'h-2 w-2 rounded-full',
+                  i == activeDotIdx ? 'bg-[#FAA806]' : 'bg-[#97A3B7]',
+                ])}
+              />
+            ))}
           </div>
         </div>
       </div>

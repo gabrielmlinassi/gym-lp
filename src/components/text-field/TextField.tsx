@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import { cnMerge } from 'utils/cn-merge';
 import { EyeIcon, EyeOffIcon } from 'components/icons';
+// import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 type TextFieldProps = {
   label: string;
@@ -19,41 +20,38 @@ const classes = {
   icon: /*tw:*/ `group-focus-within:text-[#FAA806]`,
 };
 
-const TextField = ({
-  fullWidth,
-  label,
-  name,
-  type,
-  className,
-  ...props
-}: TextFieldProps) => {
-  const [isPwdVisible, togglePwdVisibility] = useReducer((s) => !s, false);
+const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
+  ({ fullWidth, label, name, type, className, ...props }, forwardedRef) => {
+    const [isPwdVisible, togglePwdVisibility] = useReducer((s) => !s, false);
 
-  return (
-    <div className={cnMerge(classes.root, { [classes.fullWidth]: fullWidth })}>
-      <label className={classes.label} htmlFor={name}>
-        {label}
-      </label>
-      <div className={classes.inputWrap}>
-        <input
-          name={name}
-          id={name}
-          className={cnMerge(classes.input, className)}
-          type={isPwdVisible ? 'text' : type}
-          {...props}
-        />
-        {type === 'password' && (
-          <button onClick={togglePwdVisibility} className={classes.btn} type="button">
-            {isPwdVisible ? (
-              <EyeOffIcon className={classes.icon} />
-            ) : (
-              <EyeIcon className={classes.icon} />
-            )}
-          </button>
-        )}
+    return (
+      <div className={cnMerge(classes.root, { [classes.fullWidth]: fullWidth })}>
+        <label className={classes.label} htmlFor={name}>
+          {label}
+        </label>
+        <div className={classes.inputWrap}>
+          <input
+            name={name}
+            id={name}
+            className={cnMerge(classes.input, className)}
+            type={isPwdVisible ? 'text' : type}
+            ref={forwardedRef}
+            {...props}
+          />
+          {type === 'password' && (
+            <button onClick={togglePwdVisibility} className={classes.btn} type="button">
+              {isPwdVisible ? (
+                <EyeOffIcon className={classes.icon} />
+              ) : (
+                <EyeIcon className={classes.icon} />
+              )}
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
 
+TextField.displayName = 'TextField';
 export default TextField;

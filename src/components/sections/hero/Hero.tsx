@@ -27,7 +27,7 @@ const Hero = () => {
             <Button>Start free trial</Button>
           </SigninDialog>
         </div>
-        <div className="relative row-start-2 h-[400px] md:col-start-2 md:row-start-1 md:row-end-5 md:-mt-28 md:h-[700px]">
+        <div className="relative row-start-2 h-[400px] md:col-start-2 md:row-start-1 md:row-end-5 md:-mt-8 md:h-[700px]">
           <NextImage
             src={ScreenshotHeroCombo}
             layout="fill"

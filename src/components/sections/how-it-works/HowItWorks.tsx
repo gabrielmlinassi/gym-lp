@@ -16,29 +16,8 @@ const HowItWorks = () => {
         <div className="text-center">
           <Heading variant="h2">How It Works</Heading>
         </div>
-        <div className="mt-12 grid grid-cols-4 gap-10">
-          {[
-            {
-              step: '01',
-              heading: 'Build',
-              text: 'The app will build a 10-40 week program specific to your individual needs, getting you to peak strength levels by your selected date.',
-            },
-            {
-              step: '02',
-              heading: 'Train',
-              text: 'Start training with workouts crafted by world-class coach Dane Miller and access 600+ videos of movement demos and technique instruction.',
-            },
-            {
-              step: '03',
-              heading: 'Adapt',
-              text: 'The built-in AI will learn from your feedback and workouts to tell you how much weight to put on the bar each set for maximum results.',
-            },
-            {
-              step: '04',
-              heading: 'Improve',
-              text: 'As you get stronger, the app gets smarter, collecting and analyzing your workout data to ensure you are at peak strength when it matters most.',
-            },
-          ].map(({ step, heading, text }, i) => (
+        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {data.map(({ step, heading, text }, i) => (
             <div key={i} className="flex flex-col">
               <Heading variant="h3">
                 <span className="mr-2 text-[#FAA806]">{step}</span>
@@ -68,5 +47,28 @@ const HowItWorks = () => {
     </>
   );
 };
+
+const data = [
+  {
+    step: '01',
+    heading: 'Build',
+    text: 'The app will build a 10-40 week program specific to your individual needs, getting you to peak strength levels by your selected date.',
+  },
+  {
+    step: '02',
+    heading: 'Train',
+    text: 'Start training with workouts crafted by world-class coach Dane Miller and access 600+ videos of movement demos and technique instruction.',
+  },
+  {
+    step: '03',
+    heading: 'Adapt',
+    text: 'The built-in AI will learn from your feedback and workouts to tell you how much weight to put on the bar each set for maximum results.',
+  },
+  {
+    step: '04',
+    heading: 'Improve',
+    text: 'As you get stronger, the app gets smarter, collecting and analyzing your workout data to ensure you are at peak strength when it matters most.',
+  },
+];
 
 export default HowItWorks;

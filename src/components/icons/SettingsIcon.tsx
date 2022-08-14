@@ -5,8 +5,6 @@ const SettingsIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="46"
-      height="46"
       viewBox="0 0 46 46"
       fill="none"
       className={twMerge('h-6 w-6 text-[#FAA806]', className)}

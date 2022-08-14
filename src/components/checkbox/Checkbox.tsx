@@ -10,15 +10,23 @@ const s = {
   label: /*tw:*/ `select-none font-proximaNova font-normal text-[#F8F8F9]`,
 };
 
-const Checkbox = ({ label, className, ...props }: CheckboxProps) => {
-  return (
-    <div className="flex gap-2">
-      <input type="checkbox" className={cnMerge(s.input, className)} {...props} />
-      <label htmlFor="terms" className={s.label}>
-        {label}
-      </label>
-    </div>
-  );
-};
+const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  ({ label, className, ...props }, forwardedRef) => {
+    return (
+      <div className="flex gap-2">
+        <input
+          type="checkbox"
+          className={cnMerge(s.input, className)}
+          ref={forwardedRef}
+          {...props}
+        />
+        <label htmlFor="terms" className={s.label}>
+          {label}
+        </label>
+      </div>
+    );
+  }
+);
 
+Checkbox.displayName = 'Checkbox';
 export default Checkbox;

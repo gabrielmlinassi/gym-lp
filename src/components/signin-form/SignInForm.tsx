@@ -1,36 +1,53 @@
 import React from 'react';
 import NextLink from 'next/link';
+import { useForm } from 'react-hook-form';
 
+import Button from 'components/button';
 import TextField from 'components/text-field';
 import Checkbox from 'components/checkbox';
 
-type SignInFormProps = {
-  /** Elements rendered below the form. Usually action Buttons */
-  actions: React.ReactNode;
+export type SignInFormFields = {
+  fullName: string;
+  email: string;
+  pwd: string;
+  terms: boolean;
 };
 
-const SignInForm = ({ actions }: SignInFormProps) => {
+type SignInFormProps = {
+  // eslint-disable-next-line no-unused-vars
+  onSubmit: (fields: SignInFormFields) => void;
+  buttonLabel: string;
+};
+
+const SignInForm = ({ onSubmit, buttonLabel }: SignInFormProps) => {
+  const { register, handleSubmit } = useForm<SignInFormFields>();
+
   return (
-    <form className="space-y-4">
-      <TextField name="fullName" label="Full Name" type="text" fullWidth />
+    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <TextField
-        name="email"
+        label="Full Name"
+        type="text"
+        {...register('fullName', { required: true })}
+        fullWidth
+      />
+      <TextField
         label="Email"
         type="email"
         autoComplete="username"
         placeholder="ie. john.doe@email.com"
+        {...register('email', { required: true })}
         fullWidth
       />
       <TextField
-        name="pwd"
         label="Password"
         type="password"
         autoComplete="current-password"
+        {...register('pwd', { required: true })}
         fullWidth
       />
       <Checkbox
         id="terms"
-        name="terms"
+        {...register('terms', { required: true })}
         label={
           <>
             I confirm I&apos;ve read and accept{' '}
@@ -40,7 +57,11 @@ const SignInForm = ({ actions }: SignInFormProps) => {
           </>
         }
       />
-      <div className="pt-2">{actions}</div>
+      <div className="pt-2">
+        <Button type="submit" color="primary" disabled={false} loading fullWidth>
+          {buttonLabel}
+        </Button>
+      </div>
     </form>
   );
 };

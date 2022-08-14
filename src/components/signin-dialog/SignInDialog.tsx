@@ -8,28 +8,35 @@ import ButtonIcon from 'components/button-icon';
 import { AppleIcon, FbIcon, GoogleIcon } from 'components/icons';
 import SigninForm from 'components/signin-form';
 import { Text } from 'components/typography';
-import Button from 'components/button';
 import Logo from 'components/logo';
+import { SignInFormFields } from 'components/signin-form/SignInForm';
 
 type DialogProps = {} & React.ComponentProps<typeof DialogPrimitive.Root>;
 
-const classes = {
+const s = {
   overlay: /*tw:*/ `fixed inset-0 bg-black bg-opacity-25 rdx-state-open:animate-fade-in rdx-state-closed:animate-fade-out`,
   content: /*tw:*/ `fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] bg-[#1E2229] pt-12 px-8 pb-14 rounded-3xl rdx-state-open:animate-fade-in rdx-state-closed:animate-fade-out`,
+  title: /*tw:*/ `flex flex-col items-center font-industry text-[22px] font-semibold uppercase text-white`,
 };
 
 const SignInDialog = ({ children, ...props }: DialogProps) => {
   const router = useRouter();
+
+  const onSubmit = async (data: SignInFormFields) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    console.log(data);
+  };
+
   const isSignIn = router.asPath === '/signin';
 
   return (
     <DialogPrimitive.Root {...props}>
       <DialogPrimitive.Trigger asChild>{children}</DialogPrimitive.Trigger>
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className={classes.overlay} />
-        <DialogPrimitive.Content className={classes.content}>
+        <DialogPrimitive.Overlay className={s.overlay} />
+        <DialogPrimitive.Content className={s.content}>
           <div className="relative">
-            <DialogPrimitive.Title className="flex flex-col items-center font-industry text-[22px] font-semibold uppercase text-white">
+            <DialogPrimitive.Title className={s.title}>
               <Logo />
               {isSignIn ? 'Login' : 'Register'} with email
             </DialogPrimitive.Title>
@@ -42,11 +49,8 @@ const SignInDialog = ({ children, ...props }: DialogProps) => {
             </div>
             <div className="mt-6">
               <SigninForm
-                actions={
-                  <Button type="submit" color="primary" disabled={false} fullWidth>
-                    {isSignIn ? 'Log In' : 'Register'}
-                  </Button>
-                }
+                onSubmit={onSubmit}
+                buttonLabel={isSignIn ? 'Log In' : 'Register'}
               />
             </div>
             {/* separator */}
