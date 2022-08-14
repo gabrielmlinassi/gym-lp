@@ -1,12 +1,17 @@
+import React from 'react';
 import NextLink from 'next/link';
 
-import Button from 'components/button';
 import TextField from 'components/text-field';
 import Checkbox from 'components/checkbox';
 
-const SignInForm = () => {
+type SignInFormProps = {
+  /** Elements rendered below the form. Usually action Buttons */
+  actions: React.ReactNode;
+};
+
+const SignInForm = ({ actions }: SignInFormProps) => {
   return (
-    <form className="mt-6 space-y-4">
+    <form className="space-y-4">
       <TextField name="fullName" label="Full Name" type="text" fullWidth />
       <TextField
         name="email"
@@ -35,9 +40,7 @@ const SignInForm = () => {
           </>
         }
       />
-      <Button color="secondary" disabled fullWidth>
-        Register
-      </Button>
+      <div className="pt-2">{actions}</div>
     </form>
   );
 };
