@@ -5,6 +5,7 @@ type ContainerProps = {
   variant: 'outer' | 'inner';
   border?: boolean;
   children: React.ReactNode;
+  className?: string;
 };
 
 const s = {
@@ -13,8 +14,10 @@ const s = {
   border: /*tw:*/ `border-2 border-dashed border-yellow-500`,
 };
 
-const Container = ({ variant, border, children }: ContainerProps) => {
-  return <div className={cnMerge(s[variant], [border && s.border])}>{children}</div>;
+const Container = ({ variant, border, className, children }: ContainerProps) => {
+  return (
+    <div className={cnMerge(s[variant], [border && s.border], className)}>{children}</div>
+  );
 };
 
 export default Container;
