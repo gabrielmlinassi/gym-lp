@@ -43,7 +43,7 @@ const TextField = ({
           {...props}
         />
         {type === 'password' && (
-          <button onClick={togglePwdVisibility} className={classes.btn}>
+          <button onClick={togglePwdVisibility} className={classes.btn} type="button">
             {isPwdVisible ? (
               <EyeOffIcon className={classes.icon} />
             ) : (
