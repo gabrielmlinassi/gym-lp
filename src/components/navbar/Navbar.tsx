@@ -20,7 +20,7 @@ const Navbar = ({ absolute }: NavbarProps) => {
         <div className="flex w-full items-center justify-between">
           <Logo variant="full" />
           <div className="flex-shrink-0">
-            <span className="hidden font-semibold text-[#CCD4E2] sm:inline-block">
+            <span className="mr-5 hidden font-semibold text-[#CCD4E2] sm:inline-block">
               Logged in as <span className="text-white">John Smith</span>
             </span>
             <Button variant="outlined">Sign out</Button>
