@@ -9,3 +9,4 @@ export * from './SettingsIcon';
 export * from './StatsIcon';
 export * from './StarIcon';
 export * from './AtomIcon';
+export * from './CheckIcon';
