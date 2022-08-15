@@ -19,27 +19,31 @@ type FullOnly = {
   size?: never;
 };
 
-type LogoProps = {} & (MarkOnly | FullOnly);
+type LogoProps = {
+  noRedirect?: boolean;
+} & (MarkOnly | FullOnly);
 
-const Logo = ({ variant = 'mark', size = 'base' }: LogoProps) => {
+const getComp = (variant: LogoProps['variant'], size: LogoProps['size']) => {
   switch (variant) {
-    case 'mark':
-      return (
-        <NextLink href="/">
-          <a>
-            <NextImage src={LogoMark} width={WidthBySize[size]} />
-          </a>
-        </NextLink>
-      );
     case 'full':
-      return (
-        <NextLink href="/">
-          <a>
-            <NextImage src={LogoFull} />
-          </a>
-        </NextLink>
-      );
+      return <NextImage src={LogoFull} />;
+    case 'mark':
+      return <NextImage src={LogoMark} width={WidthBySize[size!]} />;
+    default:
+      return null;
   }
+};
+
+const Logo = ({ variant = 'mark', size = 'base', noRedirect }: LogoProps) => {
+  const Comp = getComp(variant, size);
+
+  if (noRedirect) return Comp;
+
+  return (
+    <NextLink href="/">
+      <a>{Comp}</a>
+    </NextLink>
+  );
 };
 
 export default Logo;

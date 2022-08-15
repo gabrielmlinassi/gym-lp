@@ -11,16 +11,18 @@ const s = {
 };
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, className, ...props }, forwardedRef) => {
+  ({ label, className, name, ...props }, forwardedRef) => {
     return (
       <div className="flex gap-2">
         <input
           type="checkbox"
+          name={name}
+          id={name}
           className={cnMerge(s.input, className)}
           ref={forwardedRef}
           {...props}
         />
-        <label htmlFor="terms" className={s.label}>
+        <label htmlFor={name} className={s.label}>
           {label}
         </label>
       </div>

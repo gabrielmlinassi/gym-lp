@@ -6,6 +6,7 @@ import { EyeIcon, EyeOffIcon } from 'components/icons';
 type TextFieldProps = {
   label: string;
   fullWidth?: boolean;
+  error?: string;
   /** This component doesn't accept type='checkbox'. Please, use Checkbox component instead */
   type: Exclude<React.ComponentProps<'input'>['type'], 'checkbox'>;
 } & Omit<React.ComponentProps<'input'>, 'type'>;
@@ -18,10 +19,11 @@ const classes = {
   input: /*tw:*/ `w-full px-4 bg-transparent text-white caret-[#FAA806] outline-none border-none focus:ring-0`,
   btn: /*tw:*/ `mr-3 flex items-center justify-center rounded p-1 hover:bg-black hover:bg-opacity-10 outline-none`,
   icon: /*tw:*/ `group-focus-within:text-[#FAA806]`,
+  error: /*tw:*/ `border-red-500`,
 };
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  ({ fullWidth, label, name, type, className, ...props }, forwardedRef) => {
+  ({ fullWidth, label, name, error, type, className, ...props }, forwardedRef) => {
     const [isPwdVisible, togglePwdVisibility] = useReducer((s) => !s, false);
 
     return (
@@ -29,7 +31,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         <label className={classes.label} htmlFor={name}>
           {label}
         </label>
-        <div className={classes.inputWrap}>
+        <div className={cnMerge(classes.inputWrap, [error && classes.error])}>
           <input
             name={name}
             id={name}
@@ -39,7 +41,12 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
             {...props}
           />
           {type === 'password' && (
-            <button onClick={togglePwdVisibility} className={classes.btn} type="button">
+            <button
+              onClick={togglePwdVisibility}
+              className={classes.btn}
+              type="button"
+              tabIndex={-1}
+            >
               {isPwdVisible ? (
                 <EyeOffIcon className={classes.icon} />
               ) : (
@@ -48,6 +55,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
             </button>
           )}
         </div>
+        {error && <span className="mt-0.5 text-sm text-red-400">{error}</span>}
       </div>
     );
   }

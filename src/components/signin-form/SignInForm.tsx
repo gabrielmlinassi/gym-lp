@@ -1,8 +1,8 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { useForm } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
+import * as yup from 'yup';
 
-import Button from 'components/button';
 import TextField from 'components/text-field';
 import Checkbox from 'components/checkbox';
 
@@ -14,25 +14,39 @@ export type SignInFormFields = {
 };
 
 type SignInFormProps = {
+  register: UseFormRegister<SignInFormFields>;
   // eslint-disable-next-line no-unused-vars
-  onSubmit: (fields: SignInFormFields) => void;
-  buttonLabel: string;
+  onSubmit: () => void;
+  errors: any;
+  actionButtons: React.ReactNode;
 };
 
-const SignInForm = ({ onSubmit, buttonLabel }: SignInFormProps) => {
-  const { register, handleSubmit } = useForm<SignInFormFields>();
+export const schema = yup
+  .object()
+  .shape({
+    fullName: yup.string().required(),
+    email: yup.string().required(),
+    pwd: yup.string().required(),
+    terms: yup.boolean().isTrue().required(),
+  })
+  .required();
 
+const SignInForm = ({ register, onSubmit, errors, actionButtons }: SignInFormProps) => {
+  console.log('errors:', errors);
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+    <form className="space-y-4" onSubmit={onSubmit}>
       <TextField
         label="Full Name"
         type="text"
+        autoFocus
+        error={errors.fullName && errors.fullName.message}
         {...register('fullName', { required: true })}
         fullWidth
       />
       <TextField
         label="Email"
         type="email"
+        error={errors.email && errors.email.message}
         autoComplete="username"
         placeholder="ie. john.doe@email.com"
         {...register('email', { required: true })}
@@ -41,27 +55,25 @@ const SignInForm = ({ onSubmit, buttonLabel }: SignInFormProps) => {
       <TextField
         label="Password"
         type="password"
+        error={errors.pwd && errors.pwd.message}
         autoComplete="current-password"
         {...register('pwd', { required: true })}
         fullWidth
       />
       <Checkbox
-        id="terms"
         {...register('terms', { required: true })}
         label={
           <>
             I confirm I&apos;ve read and accept{' '}
             <NextLink href="/terms">
-              <a className="text-[#FAA806]">terms &amp; conditions</a>
+              <a className="text-[#FAA806]" tabIndex={-1}>
+                terms &amp; conditions
+              </a>
             </NextLink>
           </>
         }
       />
-      <div className="pt-2">
-        <Button type="submit" color="primary" disabled={false} loading={false} fullWidth>
-          {buttonLabel}
-        </Button>
-      </div>
+      <div className="pt-2">{actionButtons}</div>
     </form>
   );
 };
