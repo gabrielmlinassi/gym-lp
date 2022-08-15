@@ -1,6 +1,8 @@
 import React from 'react';
+
 import Container from 'components/container';
 import Navbar from 'components/navbar';
+import Footer from 'components/footer';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -11,6 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
     <Container variant="outer">
       <Navbar />
       <main>{children}</main>
+      <Footer />
     </Container>
   );
 };
