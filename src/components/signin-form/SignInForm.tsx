@@ -58,7 +58,7 @@ const SignInForm = ({ onSubmit, buttonLabel }: SignInFormProps) => {
         }
       />
       <div className="pt-2">
-        <Button type="submit" color="primary" disabled={false} loading fullWidth>
+        <Button type="submit" color="primary" disabled={false} loading={false} fullWidth>
           {buttonLabel}
         </Button>
       </div>
