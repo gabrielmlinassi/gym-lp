@@ -17,8 +17,8 @@ const s = {
   variants: {
     'filled.primary': /*tw:*/ `bg-[#FAA806] text-[#FFFFFF] hover:bg-[#EE9F04]`,
     'filled.secondary': /*tw:*/ `bg-[#373E4B] text-[#97A3B7] hover:bg-[#343A47]`,
-    'outlined.primary': /*tw:*/ `border-[#FAA806] text-[#FAA806]`,
-    'outlined.secondary': /*tw:*/ `border-[#373E4B] text-[#373E4B]`,
+    'outlined.primary': /*tw:*/ `border border-[#FAA806] text-[#FAA806]`,
+    'outlined.secondary': /*tw:*/ `border border-[#373E4B] text-[#373E4B]`,
   },
   sizes: {
     base: /*tw:*/ `px-8 py-3`,
