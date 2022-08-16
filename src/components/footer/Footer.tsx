@@ -5,7 +5,7 @@ import { Text } from 'components/typography';
 const Footer = () => {
   return (
     <Container variant="inner">
-      <footer className="flex h-20 items-center justify-between">
+      <footer className="flex flex-col items-center justify-between gap-3 py-8 sm:flex-row sm:gap-0">
         <Text size="sm">
           © Copyright 2022 • Built by{' '}
           <a
