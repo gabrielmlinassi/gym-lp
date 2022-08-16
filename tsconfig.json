@@ -16,7 +16,9 @@
     "incremental": true,
     "baseUrl": "src",
     "paths": {
-      "@sections/*": ["components/sections/*"]
+      "@icons/*": ["components/icons/*"],
+      "@sections/*": ["components/sections/*"],
+      "@forms/*": ["components/forms/*"]
     },
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
