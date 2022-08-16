@@ -1,8 +1,9 @@
 import NextImage from 'next/image';
+
 import Container from 'components/container';
-import { Heading, Text } from 'components/typography';
-import bgAthlete from '/public/images/bg-athlete-1.png';
+import Text from 'components/Text';
 import Logo from 'components/logo';
+import bgAthlete from '/public/images/bg-athlete-1.png';
 
 const gradientStyle = {
   /** Workaround to TW lack of support for gradient percentage stops */
@@ -14,15 +15,15 @@ const HowItWorks = () => {
     <>
       <Container variant="inner" className="mt-32">
         <div className="text-center">
-          <Heading variant="h2">How It Works</Heading>
+          <h2>How It Works</h2>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {data.map(({ step, heading, text }, i) => (
             <div key={i} className="flex flex-col">
-              <Heading variant="h3">
+              <h3>
                 <span className="mr-2 text-[#FAA806]">{step}</span>
                 {heading}
-              </Heading>
+              </h3>
               <Text size="md">{text}</Text>
             </div>
           ))}
@@ -34,10 +35,8 @@ const HowItWorks = () => {
         <Container variant="inner">
           <div className="absolute top-1/2 max-w-[550px] -translate-y-1/2">
             <Logo variant="mark" />
-            <Heading variant="h2" className="mt-5">
-              champions are built
-            </Heading>
-            <Text size="lg" className="mt-3">
+            <h2 className="mt-5">champions are built</h2>
+            <Text size="2xl" className="mt-3">
               Peak Strength targets only the exercises and movements that are
               scientifically proven to make you the best you can be.
             </Text>

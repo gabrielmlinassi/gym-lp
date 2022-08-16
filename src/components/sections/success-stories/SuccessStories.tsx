@@ -1,7 +1,7 @@
 import NextImage from 'next/image';
 
 import Container from 'components/container';
-import { Heading, Text } from 'components/typography';
+import Text from 'components/Text';
 
 import logoNcaa from '/public/logos/logo-ncaa.svg';
 import logoNfl from '/public/logos/logo-nfl.svg';
@@ -14,7 +14,7 @@ const SuccessStories = () => {
     <>
       <Container variant="inner">
         <div className="mt-32 text-center">
-          <Heading variant="h2">Proven results</Heading>
+          <h2>Proven results</h2>
         </div>
         <div className="mx-auto max-w-[575px] text-center">
           <Text>

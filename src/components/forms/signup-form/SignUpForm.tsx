@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import Button from 'components/button';
 import TextField from 'components/text-field';
 import Checkbox from 'components/checkbox';
-import { Text } from 'components/typography';
+import Text from 'components/Text';
 import OAuth2 from '@forms/OAuth2';
 
 type SignUpFormProps = {
@@ -108,7 +108,7 @@ const SignUpForm = ({ shallowRouting = true }: SignUpFormProps) => {
       </div>
       <OAuth2 />
       <div className="mt-6 text-center">
-        <Text size="sm" className="font-semibold text-white">
+        <Text size="base" className="font-semibold text-white">
           Have an account?
         </Text>
         <NextLink

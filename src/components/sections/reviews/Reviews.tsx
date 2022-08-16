@@ -1,6 +1,6 @@
 import NextImage from 'next/image';
 import Container from 'components/container';
-import { Text } from 'components/typography';
+import Text from 'components/Text';
 import { StarIcon } from 'components/icons';
 import bgAthlete from '/public/images/bg-athlete-2.png';
 import { cnMerge } from 'utils/cn-merge';
@@ -24,12 +24,12 @@ const Reviews = ({ className }: { className?: string }) => {
             <StarIcon />
             <StarIcon />
           </div>
-          <Text className="mt-7 text-white" size="lg">
+          <Text className="mt-7 text-white" size="2xl">
             &quot;100% worth it. This was one of the best programs I&apos;ve used. My
             overall strength, mobility and explosion increased significantly. Highly
             recommend this program to any athlete.&quot;
           </Text>
-          <Text className="mt-7 text-white" size="lg">
+          <Text className="mt-7 text-white" size="2xl">
             - Nasir N
           </Text>
         </div>

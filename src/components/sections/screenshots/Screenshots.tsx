@@ -3,7 +3,7 @@ import NextImage from 'next/image';
 import cn from 'classnames';
 
 import Container from 'components/container';
-import { Heading, Text } from 'components/typography';
+import Text from 'components/Text';
 
 import img1A from '/public/images/screenshot-mobility-active.png';
 import img1B from '/public/images/screenshot-mobility-selection.png';
@@ -56,12 +56,9 @@ const Screenshots = () => {
               className="cursor-pointer select-none"
               onClick={() => setActiveIdx(id)}
             >
-              <Heading
-                variant="h3"
-                className={id === activeIdx ? 'text-white' : 'text-[#4A5465]'}
-              >
+              <h3 className={id === activeIdx ? 'text-white' : 'text-[#4A5465]'}>
                 {heading}
-              </Heading>
+              </h3>
               <Text
                 size="md"
                 className={id === activeIdx ? 'text-[#CCD4E2]' : 'text-[#4A5465]'}

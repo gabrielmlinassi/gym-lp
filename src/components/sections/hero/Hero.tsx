@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
 import Container from 'components/container';
-import { Heading, Text } from 'components/typography';
+import Text from 'components/Text';
 import Button from 'components/button';
 import SigninDialog from 'components/signin-dialog';
 import ScreenshotHeroCombo from '/public/images/screenshot-hero-combo.png';
@@ -17,7 +17,7 @@ const Hero = () => {
     <Container variant="inner">
       <div className="grid grid-cols-[minmax(auto,450px),1fr]">
         <div className="col-start-1">
-          <Heading variant="h1">Strength Training Built For You</Heading>
+          <h1>Strength Training Built For You</h1>
         </div>
         <div className="col-start-1 mt-5">
           <Text>

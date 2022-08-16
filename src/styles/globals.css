@@ -24,8 +24,37 @@
     font-display: swap;
   }
 
+  /*
+   * Fixes
+   */
   * {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  }
+
+  /*
+   * Typography
+   */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-industry font-semibold uppercase text-white;
+  }
+
+  h1 {
+    @apply text-5xl leading-[1.08] text-[#F8F8F9] md:text-[64px];
+  }
+
+  h2 {
+    @apply text-[32px] leading-tight md:text-5xl md:leading-[1.08];
+  }
+
+  h3 {
+    @apply text-[22px] leading-snug md:text-[32px] md:leading-tight;
+  }
+
+  h4 {
+    @apply text-[22px] leading-snug md:text-[28px] md:leading-tight;
   }
 
   /*

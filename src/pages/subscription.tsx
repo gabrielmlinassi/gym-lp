@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import NextImage from 'next/image';
 
 import Logo from 'components/logo';
-import { Heading, Text } from 'components/typography';
+import Text from 'components/Text';
 import ToggleGroup from 'components/toggle-group';
 import Container from 'components/container';
 
@@ -41,11 +41,9 @@ const AccountPage: NextPage = () => {
         <div style={gradientStyle} className="absolute inset-0" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
           <Logo variant="mark" />
-          <Heading variant="h1" className="text-[#FAA806]">
-            Premium
-          </Heading>
-          <Heading variant="h2">Strength training</Heading>
-          <Text size="lg" className="mb-4">
+          <h1 className="text-[#FAA806]">Premium</h1>
+          <h2>Strength training</h2>
+          <Text size="2xl" className="mb-4">
             is just few clicks away
           </Text>
           <ToggleGroup
@@ -63,9 +61,7 @@ const AccountPage: NextPage = () => {
         <Container variant="inner">
           <div className="flex overflow-hidden rounded-[32px] bg-[#1E2229]">
             <div className="grow p-16">
-              <Heading variant="h1" className="text-[#FAA806]">
-                10% off
-              </Heading>
+              <h1 className="text-[#FAA806]">10% off</h1>
               <Text className="font-semibold uppercase text-white">
                 your first month for a limited time.
               </Text>
@@ -102,12 +98,10 @@ const AccountPage: NextPage = () => {
             </div>
             <div className="flex w-[400px] flex-shrink-0 flex-col items-center justify-center bg-[#373E4B] p-16">
               <div className="flex items-end gap-2">
-                <Heading variant="h1">$29*</Heading>
-                <Heading variant="h2" className="text-[#97A3B7]">
-                  $39
-                </Heading>
+                <h1>$29*</h1>
+                <h2 className="text-[#97A3B7]">$39</h2>
               </div>
-              <Text size="sm" className="mt-2 text-center text-[#CCD4E2]">
+              <Text size="base" className="mt-2 text-center text-[#CCD4E2]">
                 * Early bird pricing.
                 <br /> Subscription will increase to{' '}
                 <span className="text-white">$39</span> after your first month.

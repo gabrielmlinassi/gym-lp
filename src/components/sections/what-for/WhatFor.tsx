@@ -1,13 +1,13 @@
 import Container from 'components/container';
 import { AtomIcon, MuscleIcon, SettingsIcon, StatsIcon } from 'components/icons';
-import { Heading, Text } from 'components/typography';
+import Text from 'components/Text';
 
 const WhatFor = () => {
   return (
     <div>
       <Container variant="inner">
         <div className="mx-auto mt-32 max-w-[500px] text-center">
-          <Heading variant="h2">Strength coach in your pocket</Heading>
+          <h2>Strength coach in your pocket</h2>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
           {data.map(({ Icon, heading, text }, i) => (
@@ -18,7 +18,7 @@ const WhatFor = () => {
                 </div>
               </div>
               <div>
-                <Heading variant="h3">{heading}</Heading>
+                <h4>{heading}</h4>
                 <Text size="md">{text}</Text>
               </div>
             </div>
