@@ -1,18 +1,21 @@
 import type { NextPage } from 'next';
 
-import SigninForm from 'components/signin-form';
 import { Heading } from 'components/typography';
+import Container from 'components/container';
+import SignupForm from '@forms/signup-form';
 
 const SignInPage: NextPage = () => {
   return (
-    <div className="mt-12">
-      <div className="text-center">
-        <Heading variant="h1">Register</Heading>
+    <Container variant="inner">
+      <div className="my-12">
+        <div className="mx-auto max-w-[500px] rounded-3xl bg-[#1E2229] py-12 px-8">
+          <div className="mb-10 text-center">
+            <Heading variant="h1">Register</Heading>
+          </div>
+          <SignupForm shallowRouting={false} />
+        </div>
       </div>
-      <div className="mx-auto mt-6 max-w-[500px] rounded-3xl bg-[#1E2229] p-12">
-        <SigninForm onSubmit={() => {}} buttonLabel="Register" />
-      </div>
-    </div>
+    </Container>
   );
 };
 
