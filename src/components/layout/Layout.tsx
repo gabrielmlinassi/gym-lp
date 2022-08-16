@@ -10,9 +10,9 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <Container variant="outer">
+    <Container variant="outer" className="flex min-h-[100vh] flex-col">
       <Navbar />
-      <main>{children}</main>
+      <main className="grow">{children}</main>
       <Footer />
     </Container>
   );
