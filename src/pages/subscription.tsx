@@ -6,13 +6,13 @@ import Logo from 'components/logo';
 import Text from 'components/Text';
 import ToggleGroup from 'components/toggle-group';
 import Container from 'components/container';
+import { CheckIcon } from 'components/icons';
+import Button from 'components/button';
+import Reviews from '@sections/reviews';
 
 import athleteImg from '/public/images/bg-athlete-1.png';
 import appStoreImg from '/public/images/app-store.png';
 import googlePlayImg from '/public/images/google-play.png';
-import { CheckIcon } from 'components/icons';
-import Button from 'components/button';
-import Reviews from '@sections/reviews';
 
 const gradientStyle = {
   /** Workaround to TW lack of support for gradient percentage stops */

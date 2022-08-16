@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 
-import SigninForm from 'components/forms/signin-form';
+import SigninForm from '@forms/signin-form';
 import Container from 'components/container';
 
 const SignInPage: NextPage = () => {

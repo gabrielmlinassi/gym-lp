@@ -1,7 +1,6 @@
 import React, { useReducer } from 'react';
 import { cnMerge } from 'utils/cn-merge';
 import { EyeIcon, EyeOffIcon } from 'components/icons';
-// import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 type TextFieldProps = {
   label: string;

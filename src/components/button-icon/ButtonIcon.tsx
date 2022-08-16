@@ -28,6 +28,7 @@ const classes = {
   },
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ButtonIcon = React.forwardRef<any, ButttonIconProps>(
   ({ children, variant = 'filled', size = 'base', asChild, ...props }, forwardedRef) => {
     const Comp = asChild ? Slot : 'button';

@@ -1,8 +1,6 @@
 import { SVGProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-twMerge;
-
 const Spinner = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
   return (
     <svg

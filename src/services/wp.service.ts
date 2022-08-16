@@ -2,9 +2,9 @@
  * Typings
  */
 
-export interface Posts {
-  /** */
-}
+// export interface Posts {
+
+// }
 
 /**
  * Instance

@@ -5,7 +5,7 @@ import Dialog from 'components/dialog';
 import SigninForm from '@forms/signin-form';
 import SignupForm from '@forms/signup-form';
 
-type DialogProps = {} & React.ComponentProps<typeof Dialog>;
+type DialogProps = React.ComponentProps<typeof Dialog>;
 
 const SignInDialog = ({ children, ...props }: DialogProps) => {
   const router = useRouter();
