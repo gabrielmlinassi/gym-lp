@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import type { NextPage } from 'next';
 import NextImage from 'next/image';
 
 import Logo from 'components/logo';
 import Text from 'components/Text';
-import ToggleGroup from 'components/toggle-group';
-import Container from 'components/container';
 import { CheckIcon } from 'components/icons';
+import ToggleGroup from 'components/toggle-group';
+import SigninDialog from 'components/signin-dialog';
+import Container from 'components/container';
 import Button from 'components/button';
 import Reviews from '@sections/reviews';
 
@@ -24,15 +26,19 @@ const PlanEnum = {
   Annualy: 'annualy',
 } as const;
 
-// eslint-disable-next-line no-redeclare
 type PlanEnum = typeof PlanEnum[keyof typeof PlanEnum];
 
 const AccountPage: NextPage = () => {
+  const router = useRouter();
   const [plan, setPlan] = useState<PlanEnum>('monthly');
 
   useEffect(() => {
     console.log({ plan });
   }, [plan]);
+
+  const onOpenChange = (open: boolean) => {
+    router.push('', open ? '/signup' : '', { scroll: false });
+  };
 
   return (
     <div>
@@ -106,9 +112,11 @@ const AccountPage: NextPage = () => {
                 <br /> Subscription will increase to{' '}
                 <span className="text-white">$39</span> after your first month.
               </Text>
-              <Button className="mt-4" size="lg">
-                Gain access today
-              </Button>
+              <SigninDialog onOpenChange={onOpenChange}>
+                <Button className="mt-4" size="lg">
+                  Gain access today
+                </Button>
+              </SigninDialog>
             </div>
           </div>
         </Container>

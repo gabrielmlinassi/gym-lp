@@ -10,3 +10,4 @@ export * from './StatsIcon';
 export * from './StarIcon';
 export * from './AtomIcon';
 export * from './CheckIcon';
+export * from './CardIcon';

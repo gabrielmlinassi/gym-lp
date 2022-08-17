@@ -2,16 +2,21 @@ import NextImage from 'next/image';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
+import { useMediaQuery } from 'hooks';
 import Container from 'components/container';
 import Text from 'components/Text';
 import Button from 'components/button';
 import SigninDialog from 'components/signin-dialog';
+
 import ScreenshotHeroCombo from '/public/images/screenshot-hero-combo.png';
-import { useMediaQuery } from 'hooks';
 
 const Hero = () => {
   const router = useRouter();
   const isDesktop = useMediaQuery('(min-width: 768px)');
+
+  const onOpenChange = (open: boolean) => {
+    router.replace('', open ? '/signup' : '', { scroll: false });
+  };
 
   return (
     <Container variant="inner">
@@ -27,7 +32,7 @@ const Hero = () => {
         </div>
         <div className="col-start-1 mt-8">
           {isDesktop ? (
-            <SigninDialog onOpenChange={(open) => router.push({}, open ? '/signup' : '')}>
+            <SigninDialog onOpenChange={onOpenChange}>
               <Button>Start free trial</Button>
             </SigninDialog>
           ) : (
