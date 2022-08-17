@@ -1,20 +1,23 @@
+import type { GetServerSideProps } from 'next';
+import NextImage from 'next/image';
+import { NextPageWithLayout } from './_app';
+
 import Container from 'components/container';
+import { CardIcon } from '@icons/CardIcon';
 import Logo from 'components/logo';
 import Text from 'components/Text';
-import type { GetServerSideProps, NextPage } from 'next';
-import NextImage from 'next/image';
+import Layout from 'components/layout';
 
 import athleteImg from '/public/images/bg-athlete-1.png';
 import appStoreImg from '/public/images/app-store.png';
 import googlePlayImg from '/public/images/google-play.png';
-import { CardIcon } from '@icons/CardIcon';
 
 const gradientStyle = {
   /** Workaround to TW lack of support for gradient percentage stops */
   background: `linear-gradient(90deg, rgba(37, 41, 50, 0.9) 50%, rgba(37, 41, 50, 0) 100%)`,
 };
 
-const AccountPage: NextPage = () => {
+const AccountPage: NextPageWithLayout = () => {
   return (
     <div>
       <div className="relative h-[500px]">
@@ -72,6 +75,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {},
   };
+};
+
+AccountPage.getLayout = (page) => {
+  return <Layout absoluteNav>{page}</Layout>;
 };
 
 export default AccountPage;

@@ -10,7 +10,8 @@ import Text from 'components/Text';
 import OAuth2 from '@forms/OAuth2';
 
 type SignInFormProps = {
-  shallowRouting?: boolean;
+  samePageRouting?: boolean;
+  autoFocus?: boolean;
 };
 
 export type SignInFormFields = {
@@ -26,7 +27,7 @@ export const schema = yup
   })
   .required();
 
-const SignInForm = ({ shallowRouting = true }: SignInFormProps) => {
+const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProps) => {
   const {
     register,
     handleSubmit,
@@ -49,7 +50,7 @@ const SignInForm = ({ shallowRouting = true }: SignInFormProps) => {
         label="Email"
         type="email"
         error={errors.email && errors.email.message}
-        autoFocus
+        autoFocus={autoFocus}
         autoComplete="username"
         placeholder="ie. john.doe@email.com"
         {...register('email', { required: true })}
@@ -87,8 +88,8 @@ const SignInForm = ({ shallowRouting = true }: SignInFormProps) => {
           Don&apos;t Have an account?
         </Text>
         <NextLink
-          {...(shallowRouting
-            ? { href: '', as: '/signup', shallow: true }
+          {...(samePageRouting
+            ? { href: '', as: '/signup', replace: true, scroll: false }
             : { href: '/signup' })}
         >
           <a className="mt-0.5 font-industry font-semibold uppercase text-[#FAA806] text-opacity-50 decoration-2 underline-offset-[3px] hover:underline">

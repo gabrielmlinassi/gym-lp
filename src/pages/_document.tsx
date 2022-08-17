@@ -26,7 +26,7 @@ export default function Document() {
           crossOrigin="anonymous"
         />
       </Head>
-      <body className="min-h-screen w-screen overflow-x-hidden bg-[#252932]">
+      <body className="w-screen overflow-x-hidden bg-[#252932]">
         <Main />
         <NextScript />
       </body>

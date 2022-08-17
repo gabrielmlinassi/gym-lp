@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import type { NextPage } from 'next';
 import NextImage from 'next/image';
+import { NextPageWithLayout } from './_app';
 
 import Logo from 'components/logo';
 import Text from 'components/Text';
@@ -10,6 +10,7 @@ import ToggleGroup from 'components/toggle-group';
 import SigninDialog from 'components/signin-dialog';
 import Container from 'components/container';
 import Button from 'components/button';
+import Layout from 'components/layout';
 import Reviews from '@sections/reviews';
 
 import athleteImg from '/public/images/bg-athlete-1.png';
@@ -28,7 +29,7 @@ const PlanEnum = {
 
 type PlanEnum = typeof PlanEnum[keyof typeof PlanEnum];
 
-const AccountPage: NextPage = () => {
+const SubscriptionPage: NextPageWithLayout = () => {
   const router = useRouter();
   const [plan, setPlan] = useState<PlanEnum>('monthly');
 
@@ -134,5 +135,8 @@ const AccountPage: NextPage = () => {
   );
 };
 
-// AccountPage.absoluteNav
-export default AccountPage;
+SubscriptionPage.getLayout = (page) => {
+  return <Layout absoluteNav>{page}</Layout>;
+};
+
+export default SubscriptionPage;

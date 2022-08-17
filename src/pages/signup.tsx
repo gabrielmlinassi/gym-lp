@@ -1,20 +1,18 @@
-import type { NextPage } from 'next';
-
-import Container from 'components/container';
+import { NextPage } from 'next';
 import SignupForm from '@forms/signup-form';
+import Logo from 'components/logo';
 
 const SignInPage: NextPage = () => {
   return (
-    <Container variant="inner">
-      <div className="my-12">
-        <div className="mx-auto max-w-[500px] rounded-3xl bg-[#1E2229] py-12 px-8">
-          <div className="mb-10 text-center">
-            <h1>Register</h1>
-          </div>
-          <SignupForm shallowRouting={false} />
+    <div className="flex h-screen items-center">
+      <div className="mx-auto h-screen max-w-[500px] bg-[#1E2229] py-12 px-8 sm:h-auto sm:rounded-3xl">
+        <div className="mb-8 text-center">
+          <Logo />
+          <h4>Register with email</h4>
         </div>
+        <SignupForm samePageRouting={false} autoFocus={false} />
       </div>
-    </Container>
+    </div>
   );
 };
 

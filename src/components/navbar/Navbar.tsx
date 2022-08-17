@@ -1,11 +1,10 @@
 import cn from 'classnames';
-
 import Button from 'components/button';
 import Container from 'components/container';
 import Logo from 'components/logo';
 
 type NavbarProps = {
-  absolute?: boolean;
+  absoluteNav?: boolean;
 };
 
 const s = {
@@ -13,9 +12,9 @@ const s = {
   absolute: /*tw:*/ `absolute top-0 left-0 right-0 z-10`,
 };
 
-const Navbar = ({ absolute }: NavbarProps) => {
+const Navbar = ({ absoluteNav }: NavbarProps) => {
   return (
-    <nav className={cn(s.root, [absolute && s.absolute])}>
+    <nav className={cn(s.root, [absoluteNav && s.absolute])}>
       <Container variant="inner">
         <div className="flex w-full items-center justify-between">
           <Logo variant="full" />
