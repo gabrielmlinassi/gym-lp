@@ -37,24 +37,29 @@
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5 {
     @apply font-industry font-semibold uppercase text-white;
   }
 
   h1 {
-    @apply text-5xl leading-[1.08] text-[#F8F8F9] md:text-[64px];
+    @apply text-5xl leading-[1.08] text-[#F8F8F9] md:text-6.25xl;
   }
 
   h2 {
-    @apply text-[32px] leading-tight md:text-5xl md:leading-[1.08];
+    @apply text-3xl leading-tight md:text-5xl md:leading-[1.08];
   }
 
   h3 {
-    @apply text-[22px] leading-snug md:text-[32px] md:leading-tight;
+    @apply text-1.5xl leading-snug md:text-3xl md:leading-tight;
   }
 
   h4 {
-    @apply text-[22px] leading-snug md:text-[28px] md:leading-tight;
+    @apply text-1.5xl leading-snug md:text-2.5xl md:leading-tight;
+  }
+
+  h5 {
+    @apply text-base leading-snug md:text-1.5xl md:leading-tight;
   }
 
   /*

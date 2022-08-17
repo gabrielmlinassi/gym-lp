@@ -12,7 +12,7 @@ const gradientStyle = {
 
 const Reviews = ({ className }: { className?: string }) => {
   return (
-    <div className={cnMerge('relative h-[550px]', className)}>
+    <div className={cnMerge('relative h-[400px] sm:h-[550px]', className)}>
       <NextImage src={bgAthlete} layout="fill" objectFit="cover" sizes="100vw" />
       <div style={gradientStyle} className="absolute inset-0" />
       <Container variant="inner">
@@ -24,7 +24,7 @@ const Reviews = ({ className }: { className?: string }) => {
             <StarIcon />
             <StarIcon />
           </div>
-          <Text className="mt-7 text-white" size="2xl">
+          <Text className="mt-7 pr-8 text-white" size="2xl">
             &quot;100% worth it. This was one of the best programs I&apos;ve used. My
             overall strength, mobility and explosion increased significantly. Highly
             recommend this program to any athlete.&quot;

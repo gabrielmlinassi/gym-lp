@@ -9,6 +9,12 @@ module.exports = {
         industry: ['Industry', ...defaultTheme.fontFamily.sans],
         proximaNova: ['Proxima Nova', ...defaultTheme.fontFamily.sans],
       },
+      fontSize: {
+        '1.5xl': '1.375rem', // 22px
+        '2.5xl': '1.75rem', // 28px
+        '3xl': '2rem', // 32px
+        '6.25xl': '4rem', // 64px
+      },
       keyframes: {
         // Dialog
         'fade-in': {

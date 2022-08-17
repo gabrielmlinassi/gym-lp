@@ -46,7 +46,7 @@ const Hero = () => {
             src={ScreenshotHeroCombo}
             layout="fill"
             objectFit="contain"
-            sizes="700px"
+            sizes="(min-width: 48em) 50vw, 90vw"
             priority
             quality={100}
           />

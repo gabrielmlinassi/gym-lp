@@ -25,7 +25,7 @@ const HomePage: NextPageWithLayout = () => {
 };
 
 HomePage.getLayout = (page) => {
-  return <Layout>{page}</Layout>;
+  return <Layout marginFooter={false}>{page}</Layout>;
 };
 
 export default HomePage;

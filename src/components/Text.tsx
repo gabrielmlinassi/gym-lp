@@ -11,10 +11,10 @@ const s = {
   root: /*tw:*/ `font-proximaNova font-normal text-[#CCD4E2]`,
   sizes: {
     base: /*tw:*/ `text-base`, // 16px
-    md: /*tw:*/ `text-xl leading-normal`, // 20px
+    md: /*tw:*/ `text-base leading-snug sm:text-xl sm:leading-normal`, // 20px
     lg: /*tw:*/ `text-[22px] leading-normal`, // 22px
     xl: /*tw:*/ `text-2xl leading-normal`, // 24px
-    '2xl': /*tw:*/ `text-[28px] leading-snug`, // 28px
+    '2xl': /*tw:*/ `text-xl leading-normal sm:text-2.5xl sm:leading-snug`, // 20->28
   },
 };
 

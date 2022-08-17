@@ -1,11 +1,11 @@
 import React, { useReducer } from 'react';
 import { cnMerge } from 'utils/cn-merge';
-import { EyeIcon, EyeOffIcon } from 'components/icons';
+import { ErrorIcon, EyeIcon, EyeOffIcon } from 'components/icons';
 
 type TextFieldProps = {
   label: string;
   fullWidth?: boolean;
-  error?: string;
+  error?: string | boolean;
   /** This component doesn't accept type='checkbox'. Please, use Checkbox component instead */
   type: Exclude<React.ComponentProps<'input'>['type'], 'checkbox'>;
 } & Omit<React.ComponentProps<'input'>, 'type'>;
@@ -18,7 +18,7 @@ const classes = {
   input: /*tw:*/ `w-full px-4 bg-transparent text-white caret-[#FAA806] outline-none border-none focus:ring-0`,
   btn: /*tw:*/ `mr-3 flex items-center justify-center rounded p-1 hover:bg-black hover:bg-opacity-10 outline-none`,
   icon: /*tw:*/ `group-focus-within:text-[#FAA806]`,
-  error: /*tw:*/ `border-red-500`,
+  error: /*tw:*/ `border-[#EF4100]`,
 };
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -54,7 +54,12 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
             </button>
           )}
         </div>
-        {error && <span className="mt-0.5 text-sm text-red-400">{error}</span>}
+        {typeof error == 'string' && error.length > 0 && (
+          <span className="mt-1 flex items-center gap-1.5 text-sm text-[#EF4100]">
+            <ErrorIcon className="mt-0.5" />
+            {error}
+          </span>
+        )}
       </div>
     );
   }

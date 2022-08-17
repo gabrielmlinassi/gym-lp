@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 
-function useMediaQuery(query: string): boolean {
-  const getMatches = (query: string): boolean => {
+function useMediaQuery(query: string): boolean | undefined {
+  const getMatches = (query: string): boolean | undefined => {
     // Prevents SSR issues
     if (typeof window !== 'undefined') {
       return window.matchMedia(query).matches;
     }
-    return false;
+    return undefined;
   };
 
-  const [matches, setMatches] = useState<boolean>(getMatches(query));
+  const [matches, setMatches] = useState<boolean | undefined>(getMatches(query));
 
   function handleChange() {
     setMatches(getMatches(query));

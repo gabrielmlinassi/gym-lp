@@ -8,6 +8,7 @@ import Button from 'components/button';
 import TextField from 'components/text-field';
 import Text from 'components/Text';
 import OAuth2 from '@forms/OAuth2';
+import { ErrorIcon } from '@icons/ErrorIcon';
 
 type SignInFormProps = {
   samePageRouting?: boolean;
@@ -40,7 +41,8 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
 
   const onSubmit = async (data: SignInFormFields) => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    setError('email', { message: 'Email already exists' }, { shouldFocus: true });
+    setError('email', { message: "Email and password don't match. Try again." });
+    setError('pwd', {});
     console.log(data);
   };
 
@@ -49,7 +51,7 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
       <TextField
         label="Email"
         type="email"
-        error={errors.email && errors.email.message}
+        error={!!errors.email && !!errors.pwd}
         autoFocus={autoFocus}
         autoComplete="username"
         placeholder="ie. john.doe@email.com"
@@ -59,11 +61,17 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
       <TextField
         label="Password"
         type="password"
-        error={errors.pwd && errors.pwd.message}
+        error={!!errors.email && !!errors.pwd}
         autoComplete="current-password"
         {...register('pwd', { required: true })}
         fullWidth
       />
+      {errors.email && errors.pwd && (
+        <div className="mt-2 flex items-start gap-2 rounded-lg bg-black bg-opacity-10 p-4 text-left text-sm text-[#EF4100]">
+          <ErrorIcon className="mt-0.5 flex-shrink-0" />
+          <span>{errors.email.message}</span>
+        </div>
+      )}
       <div className="pt-2">
         <Button
           type="submit"

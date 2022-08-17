@@ -11,3 +11,4 @@ export * from './StarIcon';
 export * from './AtomIcon';
 export * from './CheckIcon';
 export * from './CardIcon';
+export * from './ErrorIcon';

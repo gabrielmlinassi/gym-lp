@@ -29,7 +29,7 @@ const HowItWorks = () => {
           ))}
         </div>
       </Container>
-      <div className="relative mt-28 h-[675px]">
+      <div className="relative mt-28 h-[400px] sm:h-[675px]">
         <NextImage src={bgAthlete} layout="fill" objectFit="cover" sizes="100vw" />
         <div style={gradientStyle} className="absolute inset-0" />
         <Container variant="inner">
