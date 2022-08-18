@@ -49,21 +49,21 @@ const Hero = () => {
               <NextImage
                 src={pattern}
                 layout="fill"
-                objectPosition="right"
+                priority
                 objectFit="contain"
                 sizes="(min-width: 48em) 50vw, 90vw"
-                priority
+                className="object-center md:object-right"
               />
             </div>
           </div>
           <NextImage
             src={ScreenshotHeroCombo}
             layout="fill"
-            objectFit="contain"
-            objectPosition="right"
-            sizes="(min-width: 48em) 40vw, 90vw"
             priority
             quality={100}
+            objectFit="contain"
+            sizes="(min-width: 48em) 40vw, 90vw"
+            className="object-center md:object-right"
           />
         </div>
       </div>

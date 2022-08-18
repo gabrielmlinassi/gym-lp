@@ -9,7 +9,7 @@ const WhatFor = () => {
   return (
     <div className="relative">
       <div className="absolute inset-0 z-10">
-        <NextImage src={pattern} layout="fill" objectFit="fill" />
+        <NextImage src={pattern} layout="fill" objectFit="cover" objectPosition="top" />
       </div>
       <div
         className="absolute inset-0 -inset-y-32 z-10"
