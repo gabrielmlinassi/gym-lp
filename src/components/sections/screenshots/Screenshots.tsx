@@ -62,7 +62,7 @@ const Screenshots = () => {
   return (
     <Container variant="inner" className="mt-44">
       <div className="screenshots flex flex-col-reverse gap-8 md:flex-row">
-        <div className="space-y-12 sm:w-[300px] md:w-[475px]">
+        <div className="flex-shrink-0 space-y-12 sm:w-[300px] md:w-[400px] xl:w-[475px]">
           {data.map(({ heading, text }, screenIdx) => {
             const active = screenIdx == activeScreenIdx;
             return (
@@ -79,9 +79,10 @@ const Screenshots = () => {
             );
           })}
         </div>
-        <div className="grow">
-          <div className="carousel -mr-4 flex h-[600px] snap-x snap-mandatory gap-1 overflow-auto md:mr-0 md:grow">
-            <div className="slide relative w-[300px] flex-shrink-0 snap-start md:w-full md:flex-shrink">
+
+        <div className="-mr-6 overflow-hidden xl:w-full">
+          <div className="carousel flex h-[600px] snap-x snap-mandatory gap-1 overflow-auto xl:mr-0 xl:grow">
+            <div className="slide relative w-[300px] flex-shrink-0 snap-start xl:w-full xl:flex-shrink">
               <NextImage
                 src={Screens[activeScreenIdx][0]}
                 placeholder="blur"
@@ -101,7 +102,7 @@ const Screenshots = () => {
                 sizes="350px"
               />
             </div>
-            <div className="slide relative mr-4 w-[300px] flex-shrink-0 snap-start md:mr-0 md:w-full md:flex-shrink">
+            <div className="slide relative mr-4 w-[300px] flex-shrink-0 snap-start xl:mr-0 xl:w-full xl:flex-shrink">
               <NextImage
                 src={Screens[activeScreenIdx][1]}
                 placeholder="blur"
@@ -122,7 +123,7 @@ const Screenshots = () => {
               />
             </div>
           </div>
-          <div className="mt-4 flex items-center justify-center gap-2 md:hidden">
+          <div className="mt-4 flex items-center justify-center gap-2 xl:hidden">
             {Object.values(Screens[activeScreenIdx]).map((_, dotIdx) => (
               <div
                 key={dotIdx}

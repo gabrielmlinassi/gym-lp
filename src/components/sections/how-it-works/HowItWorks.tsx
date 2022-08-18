@@ -13,7 +13,7 @@ const gradientStyle = {
 const HowItWorks = () => {
   return (
     <>
-      <div className="relative mt-36 h-[400px] sm:h-[675px]">
+      <div className="relative mt-36 h-[400px] lg:h-[675px]">
         <NextImage
           src={bgAthlete}
           placeholder="blur"
@@ -37,7 +37,7 @@ const HowItWorks = () => {
         <div className="text-center">
           <h2>How It Works</h2>
         </div>
-        <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {data.map(({ step, heading, text }, i) => (
             <div key={i} className="flex flex-col">
               <h3>

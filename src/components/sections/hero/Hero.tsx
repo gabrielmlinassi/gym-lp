@@ -19,7 +19,7 @@ const Hero = () => {
 
   return (
     <Container variant="hero">
-      <div className="grid grid-cols-[minmax(auto,550px),1fr]">
+      <div className="grid grid-cols-1 sm:grid-cols-[minmax(auto,450px),minmax(400px,1fr)] xl:grid-cols-[minmax(auto,550px),minmax(400px,1fr)]">
         <div className="col-start-1 max-w-[450px]">
           <h1>Strength Training Built For You</h1>
         </div>

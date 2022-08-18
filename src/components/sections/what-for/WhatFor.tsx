@@ -21,11 +21,11 @@ const WhatFor = () => {
         <div className="mx-auto mt-32 max-w-[550px] text-center">
           <h2>Strength coach in your pocket</h2>
         </div>
-        <div className="mt-16 grid grid-cols-[minmax(auto,500px)] justify-center gap-12 md:grid-cols-[repeat(2,minmax(auto,510px))] md:gap-16">
+        <div className="mt-16 grid grid-cols-[minmax(auto,500px)] justify-center gap-12 md:grid-cols-[repeat(2,minmax(auto,510px))] lg:gap-16">
           {data.map(({ Icon, heading, text }, i) => (
             <div key={i} className="flex gap-4">
               <div>
-                <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-[#1E2229] p-4 sm:h-20 sm:w-20">
+                <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-[#1E2229] p-4 lg:h-20 lg:w-20">
                   <Icon className="h-full w-full" />
                 </div>
               </div>
