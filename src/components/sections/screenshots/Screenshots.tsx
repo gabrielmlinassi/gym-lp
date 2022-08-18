@@ -60,7 +60,7 @@ const Screenshots = () => {
   };
 
   return (
-    <Container variant="inner" className="mt-44">
+    <Container variant="inner" className="z-10 mt-20 md:mt-44">
       <div className="screenshots flex flex-col-reverse gap-8 md:flex-row">
         <div className="flex-shrink-0 space-y-12 sm:w-[300px] md:w-[400px] xl:w-[475px]">
           {data.map(({ heading, text }, screenIdx) => {
