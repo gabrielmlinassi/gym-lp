@@ -20,10 +20,10 @@ const Hero = () => {
   return (
     <Container variant="hero">
       <div className="grid grid-cols-1 sm:grid-cols-[minmax(auto,450px),minmax(400px,1fr)] xl:grid-cols-[minmax(auto,550px),minmax(400px,1fr)]">
-        <div className="col-start-1 max-w-[450px]">
+        <div className="z-30 col-start-1 max-w-[450px]">
           <h1>Strength Training Built For You</h1>
         </div>
-        <div className="col-start-1 mt-5">
+        <div className="z-30 col-start-1 mt-5">
           <Text>
             Maximize your athletic potential with individualized, sport-specific training
             to increase your strength, explosiveness, and speed.
@@ -44,15 +44,14 @@ const Hero = () => {
           </div>
         </div>
         <div className="relative row-start-2 h-[400px] md:col-start-2 md:row-start-1 md:row-end-5 md:-mt-24 md:h-[700px]">
-          <div className="absolute inset-0 bottom-20 right-0 sm:-right-8">
+          <div className="absolute inset-0 -inset-x-6 -inset-y-36 sm:inset-0 sm:bottom-20 sm:-right-8">
             <div>
               <NextImage
                 src={pattern}
                 layout="fill"
                 priority
-                objectFit="contain"
                 sizes="(min-width: 48em) 50vw, 90vw"
-                className="object-center md:object-right"
+                className="object-cover object-center sm:object-contain md:object-right"
               />
             </div>
           </div>
