@@ -61,7 +61,7 @@ const Screenshots = () => {
 
   return (
     <Container variant="inner" className="z-10 mt-20 md:mt-44">
-      <div className="screenshots flex flex-col-reverse gap-8 md:flex-row">
+      <div className="screenshots relative flex flex-col-reverse gap-8 md:flex-row">
         <div className="flex-shrink-0 space-y-12 sm:w-[300px] md:w-[400px] xl:w-[475px]">
           {data.map(({ heading, text }, screenIdx) => {
             const active = screenIdx == activeScreenIdx;
@@ -79,7 +79,6 @@ const Screenshots = () => {
             );
           })}
         </div>
-
         <div className="-mr-6 overflow-hidden xl:w-full">
           <div className="carousel flex h-[600px] snap-x snap-mandatory gap-1 overflow-auto xl:mr-0 xl:grow">
             <div className="slide relative w-[300px] flex-shrink-0 snap-start xl:w-full xl:flex-shrink">
