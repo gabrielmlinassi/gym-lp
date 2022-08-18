@@ -2,7 +2,7 @@ import React from 'react';
 import { cnMerge } from 'utils/cn-merge';
 
 type ContainerProps = {
-  variant: 'outer' | 'inner';
+  variant: 'outer' | 'inner' | 'hero';
   border?: boolean;
   children: React.ReactNode;
   className?: string;
@@ -11,6 +11,7 @@ type ContainerProps = {
 const s = {
   outer: /*tw:*/ `mx-auto max-w-[1920px] w-full`,
   inner: /*tw:*/ `mx-auto max-w-[calc(1120px+32px)] w-full px-4`,
+  hero: /*tw:*/ `mx-auto max-w-[calc(1180px+32px)] w-full px-4`,
   border: /*tw:*/ `border-2 border-dashed border-yellow-500`,
 };
 

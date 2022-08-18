@@ -4,7 +4,6 @@ import NextImage from 'next/image';
 import NextLink from 'next/link';
 import { NextPageWithLayout } from './_app';
 
-import { useMediaQuery } from 'hooks';
 import Logo from 'components/logo';
 import Text from 'components/Text';
 import { CheckIcon } from 'components/icons';
@@ -33,10 +32,7 @@ type PlanEnum = typeof PlanEnum[keyof typeof PlanEnum];
 
 const SubscriptionPage: NextPageWithLayout = () => {
   const router = useRouter();
-  const isDesktop = useMediaQuery('(min-width: 768px)');
   const [plan, setPlan] = useState<PlanEnum>('monthly');
-
-  console.log('isDesktop', isDesktop);
 
   useEffect(() => {
     console.log({ plan });
@@ -117,15 +113,18 @@ const SubscriptionPage: NextPageWithLayout = () => {
                 <span className="text-white">$39</span> after your first month.
               </Text>
               <div className="mt-4">
-                {isDesktop ? (
+                {/* Temporary workaround. If I conditionally render with a hook, it throws an 
+                hydratation error. It's possibility something on Radix side. Wait for new versions. */}
+                <div className="hidden sm:block">
                   <SigninDialog onOpenChange={onOpenChange}>
                     <Button size="lg">Gain access today</Button>
                   </SigninDialog>
-                ) : (
+                </div>
+                <div className="block sm:hidden">
                   <NextLink href="/signup" passHref>
                     <Button size="lg">Gain access today</Button>
                   </NextLink>
-                )}
+                </div>
               </div>
             </div>
           </div>
