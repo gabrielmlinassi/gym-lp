@@ -13,11 +13,25 @@ const gradientStyle = {
 const HowItWorks = () => {
   return (
     <>
-      <Container variant="inner" className="mt-32">
+      <div className="relative mt-36 h-[400px] sm:h-[675px]">
+        <NextImage src={bgAthlete} layout="fill" objectFit="cover" sizes="100vw" />
+        <div style={gradientStyle} className="absolute inset-0" />
+        <Container variant="inner">
+          <div className="absolute top-1/2 max-w-[550px] -translate-y-1/2">
+            <Logo variant="mark" noRedirect />
+            <h2 className="mt-5">champions are built</h2>
+            <Text size="2xl" className="mt-3">
+              Peak Strength targets only the exercises and movements that are
+              scientifically proven to make you the best you can be.
+            </Text>
+          </div>
+        </Container>
+      </div>
+      <Container variant="inner" className="mt-36">
         <div className="text-center">
           <h2>How It Works</h2>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {data.map(({ step, heading, text }, i) => (
             <div key={i} className="flex flex-col">
               <h3>
@@ -29,20 +43,6 @@ const HowItWorks = () => {
           ))}
         </div>
       </Container>
-      <div className="relative mt-28 h-[400px] sm:h-[675px]">
-        <NextImage src={bgAthlete} layout="fill" objectFit="cover" sizes="100vw" />
-        <div style={gradientStyle} className="absolute inset-0" />
-        <Container variant="inner">
-          <div className="absolute top-1/2 max-w-[550px] -translate-y-1/2">
-            <Logo variant="mark" />
-            <h2 className="mt-5">champions are built</h2>
-            <Text size="2xl" className="mt-3">
-              Peak Strength targets only the exercises and movements that are
-              scientifically proven to make you the best you can be.
-            </Text>
-          </div>
-        </Container>
-      </div>
     </>
   );
 };

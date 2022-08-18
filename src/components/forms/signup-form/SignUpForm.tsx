@@ -63,7 +63,7 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
         label="Email"
         type="email"
         error={errors.email && errors.email.message}
-        autoComplete="username"
+        autoComplete="on"
         placeholder="ie. john.doe@email.com"
         {...register('email', { required: true })}
         fullWidth

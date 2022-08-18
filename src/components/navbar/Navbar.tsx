@@ -2,10 +2,12 @@ import cn from 'classnames';
 import Button from 'components/button';
 import Container from 'components/container';
 import Logo from 'components/logo';
+import React from 'react';
 
 type NavbarProps = {
   absoluteNav?: boolean;
   userMenu?: boolean;
+  navContainer?: React.ComponentProps<typeof Container>['variant'];
 };
 
 const s = {
@@ -13,10 +15,10 @@ const s = {
   absolute: /*tw:*/ `absolute top-0 left-0 right-0 z-10`,
 };
 
-const Navbar = ({ absoluteNav, userMenu }: NavbarProps) => {
+const Navbar = ({ absoluteNav, userMenu, navContainer = 'inner' }: NavbarProps) => {
   return (
     <nav className={cn(s.root, [absoluteNav && s.absolute])}>
-      <Container variant="inner">
+      <Container variant={navContainer}>
         <div className="flex w-full items-center justify-between">
           <Logo variant="full" />
           {userMenu && (

@@ -1,15 +1,27 @@
+import NextImage from 'next/image';
+
 import Container from 'components/container';
 import { AtomIcon, MuscleIcon, SettingsIcon, StatsIcon } from 'components/icons';
 import Text from 'components/Text';
+import pattern from '/public/patterns/bg-matrix-peaks.svg';
 
 const WhatFor = () => {
   return (
-    <div>
-      <Container variant="inner">
-        <div className="mx-auto mt-32 max-w-[500px] text-center">
+    <div className="relative">
+      <div className="absolute inset-0 z-10">
+        <NextImage src={pattern} layout="fill" objectFit="fill" />
+      </div>
+      <div
+        className="absolute inset-0 -inset-y-32 z-10"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(37, 42, 51, 0) 50%, #252A33 100%)',
+        }}
+      />
+      <Container variant="inner" className="relative z-30">
+        <div className="mx-auto mt-32 max-w-[550px] text-center">
           <h2>Strength coach in your pocket</h2>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-2">
+        <div className="mt-16 grid grid-cols-[minmax(auto,500px)] justify-center gap-12 md:grid-cols-[repeat(2,minmax(auto,510px))] md:gap-16">
           {data.map(({ Icon, heading, text }, i) => (
             <div key={i} className="flex gap-4">
               <div>

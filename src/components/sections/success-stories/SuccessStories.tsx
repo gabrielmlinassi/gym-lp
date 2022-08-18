@@ -13,7 +13,7 @@ const SuccessStories = () => {
   return (
     <>
       <Container variant="inner">
-        <div className="mt-32 text-center">
+        <div className="mt-44 text-center">
           <h2>Proven results</h2>
         </div>
         <div className="mx-auto max-w-[575px] text-center">
