@@ -80,10 +80,21 @@ const Screenshots = () => {
           })}
         </div>
         <div className="grow">
-          <div className="carousel -mr-4 flex h-[600px] snap-x snap-mandatory overflow-auto md:mr-0 md:grow">
+          <div className="carousel -mr-4 flex h-[600px] snap-x snap-mandatory gap-1 overflow-auto md:mr-0 md:grow">
             <div className="slide relative w-[300px] flex-shrink-0 snap-start md:w-full md:flex-shrink">
               <NextImage
                 src={Screens[activeScreenIdx][0]}
+                placeholder="blur"
+                quality={100}
+                layout="fill"
+                objectFit="contain"
+                sizes="350px"
+              />
+              <NextImage
+                // ..% Screens.length to prevent prefetching a path out of boundary
+                src={Screens[(activeScreenIdx + 1) % Screens.length][0]}
+                placeholder="blur"
+                className="invisible" // For prefeching purposes
                 quality={100}
                 layout="fill"
                 objectFit="contain"
@@ -93,6 +104,17 @@ const Screenshots = () => {
             <div className="slide relative mr-4 w-[300px] flex-shrink-0 snap-start md:mr-0 md:w-full md:flex-shrink">
               <NextImage
                 src={Screens[activeScreenIdx][1]}
+                placeholder="blur"
+                quality={100}
+                layout="fill"
+                objectFit="contain"
+                sizes="350px"
+              />
+              <NextImage
+                // ..% Screens.length to prevent prefetching a path out of boundary
+                src={Screens[(activeScreenIdx + 1) % Screens.length][1]}
+                placeholder="blur"
+                className="invisible" // For prefeching purposes
                 quality={100}
                 layout="fill"
                 objectFit="contain"

@@ -14,7 +14,13 @@ const HowItWorks = () => {
   return (
     <>
       <div className="relative mt-36 h-[400px] sm:h-[675px]">
-        <NextImage src={bgAthlete} layout="fill" objectFit="cover" sizes="100vw" />
+        <NextImage
+          src={bgAthlete}
+          placeholder="blur"
+          layout="fill"
+          objectFit="cover"
+          sizes="100vw"
+        />
         <div style={gradientStyle} className="absolute inset-0" />
         <Container variant="inner">
           <div className="absolute top-1/2 max-w-[550px] -translate-y-1/2">

@@ -61,7 +61,7 @@ const Hero = () => {
             layout="fill"
             objectFit="contain"
             objectPosition="right"
-            sizes="(min-width: 48em) 50vw, 90vw"
+            sizes="(min-width: 48em) 40vw, 90vw"
             priority
             quality={100}
           />

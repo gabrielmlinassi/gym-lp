@@ -1,9 +1,10 @@
 import NextImage from 'next/image';
+
+import { cnMerge } from 'utils/cn-merge';
 import Container from 'components/container';
 import Text from 'components/Text';
 import { StarIcon } from 'components/icons';
 import bgAthlete from '/public/images/bg-athlete-2.png';
-import { cnMerge } from 'utils/cn-merge';
 
 const gradientStyle = {
   /** Workaround to TW lack of support for gradient percentage stops */
@@ -13,7 +14,13 @@ const gradientStyle = {
 const Reviews = ({ className }: { className?: string }) => {
   return (
     <div className={cnMerge('relative h-[400px] sm:h-[550px]', className)}>
-      <NextImage src={bgAthlete} layout="fill" objectFit="cover" sizes="100vw" />
+      <NextImage
+        src={bgAthlete}
+        placeholder="blur"
+        layout="fill"
+        objectFit="cover"
+        sizes="100vw"
+      />
       <div style={gradientStyle} className="absolute inset-0" />
       <Container variant="inner">
         <div className="absolute top-1/2 max-w-[490px] -translate-y-1/2">
