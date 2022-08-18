@@ -19,8 +19,8 @@ type DialogContentProps = {
 } & React.ComponentProps<typeof DialogPrimitive.Content>;
 
 const s = {
-  overlay: /*tw:*/ `fixed inset-0 bg-black bg-opacity-75 rdx-state-open:animate-fade-in rdx-state-closed:animate-fade-out`,
-  content: /*tw:*/ `dialog--scrollbar fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] max-h-[90vh] overflow-auto bg-[#1E2229] pt-12 px-8 pb-14 rounded-3xl rdx-state-open:animate-fade-in rdx-state-closed:animate-fade-out`,
+  overlay: /*tw:*/ `fixed inset-0 bg-black z-30 bg-opacity-75 rdx-state-open:animate-fade-in rdx-state-closed:animate-fade-out`,
+  content: /*tw:*/ `dialog--scrollbar fixed z-30 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] max-h-[90vh] overflow-auto bg-[#1E2229] pt-12 px-8 pb-14 rounded-3xl rdx-state-open:animate-fade-in rdx-state-closed:animate-fade-out`,
   title: /*tw:*/ `flex flex-col items-center font-industry text-[22px] font-semibold uppercase text-white`,
 };
 

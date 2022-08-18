@@ -20,10 +20,10 @@ const Hero = () => {
   return (
     <Container variant="hero">
       <div className="grid grid-cols-1 sm:grid-cols-[minmax(auto,450px),minmax(400px,1fr)] xl:grid-cols-[minmax(auto,550px),minmax(400px,1fr)]">
-        <div className="z-30 col-start-1 max-w-[450px]">
+        <div className="z-10 col-start-1 max-w-[450px]">
           <h1>Strength Training Built For You</h1>
         </div>
-        <div className="z-30 col-start-1 mt-5">
+        <div className="z-10 col-start-1 mt-5">
           <Text>
             Maximize your athletic potential with individualized, sport-specific training
             to increase your strength, explosiveness, and speed.
