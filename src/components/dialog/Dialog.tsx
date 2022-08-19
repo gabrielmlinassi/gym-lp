@@ -39,7 +39,7 @@ const DialogContent = ({ children, title, ...props }: DialogContentProps) => {
       <DialogPrimitive.Content className={s.content} {...props}>
         <div className="relative">
           <DialogPrimitive.Title className={s.title}>
-            <Logo noRedirect />
+            <Logo variant="mark" size="onlySm" noRedirect />
             <span className="mt-1">{title}</span>
           </DialogPrimitive.Title>
           <div className="absolute top-0 right-0">

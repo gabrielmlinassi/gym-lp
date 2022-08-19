@@ -23,8 +23,8 @@ const AccountPage: NextPageWithLayout = () => {
       <div className="relative h-[325px] sm:h-[500px]">
         <NextImage src={athleteImg} layout="fill" sizes="100vw" objectFit="cover" />
         <div style={gradientStyle} className="absolute inset-0" />
-        <div className="absolute top-1/2 left-1/2 mt-4 w-full -translate-x-1/2 -translate-y-1/2 text-center sm:w-[800px]">
-          <Logo noRedirect />
+        <div className="absolute top-1/2 left-1/2 mt-4 w-full max-w-[600px] -translate-x-1/2 -translate-y-1/2 text-center lg:max-w-[800px]">
+          <Logo variant="mark" size="onlyLg" noRedirect />
           <h2 className="text-base md:text-5xl">Your PeakStrength account is</h2>
           <h1 className="text-[#FAA806]">Active</h1>
         </div>

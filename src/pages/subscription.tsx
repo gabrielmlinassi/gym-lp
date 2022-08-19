@@ -47,8 +47,8 @@ const SubscriptionPage: NextPageWithLayout = () => {
       <div className="relative h-[700px]">
         <NextImage src={athleteImg} layout="fill" sizes="100vw" objectFit="cover" />
         <div style={gradientStyle} className="absolute inset-0" />
-        <div className="absolute top-1/2 left-1/2 w-full max-w-[500px] -translate-x-1/2 -translate-y-1/2 pl-4 pr-8 text-center">
-          <Logo variant="mark" />
+        <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 pl-4 pr-8 text-center">
+          <Logo variant="mark" size="onlyLg" />
           <h1 className="mt-2 text-[#FAA806]">Premium</h1>
           <h2>Strength training</h2>
           <Text size="2xl" className="mb-4">

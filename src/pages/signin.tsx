@@ -7,7 +7,7 @@ const SignInPage: NextPage = () => {
     <div className="flex h-screen items-center">
       <div className="mx-auto h-screen max-w-[500px] bg-[#1E2229] py-12 px-8 sm:h-auto sm:rounded-3xl">
         <div className="mb-8 text-center">
-          <Logo />
+          <Logo variant="mark" size="onlyLg" />
           <h4>Log in with email</h4>
         </div>
         <SigninForm samePageRouting={false} autoFocus={false} />
