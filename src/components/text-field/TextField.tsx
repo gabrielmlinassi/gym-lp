@@ -18,7 +18,7 @@ const classes = {
   input: /*tw:*/ `w-full px-4 m-1.5 bg-transparent text-white caret-yellow-500 outline-none border-none focus:ring-0`,
   btn: /*tw:*/ `mr-3 flex items-center justify-center rounded p-1 hover:bg-black hover:bg-opacity-10 outline-none`,
   icon: /*tw:*/ `group-focus-within:text-yellow-500`,
-  error: /*tw:*/ `border-[#EF4100]`,
+  error: /*tw:*/ `border-red`,
 };
 
 const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -55,7 +55,7 @@ const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           )}
         </div>
         {typeof error == 'string' && error.length > 0 && (
-          <span className="mt-1 flex items-center gap-1.5 text-sm text-[#EF4100]">
+          <span className="mt-1 flex items-center gap-1.5 text-sm text-red">
             <ErrorIcon className="mt-0.5" />
             {error}
           </span>

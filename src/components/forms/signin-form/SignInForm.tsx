@@ -67,7 +67,7 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
         fullWidth
       />
       {errors.email && errors.pwd && (
-        <div className="mt-2 flex items-start gap-2 rounded-lg bg-black bg-opacity-10 p-4 text-left text-sm text-[#EF4100]">
+        <div className="mt-2 flex items-start gap-2 rounded-lg bg-black bg-opacity-10 p-4 text-left text-sm text-red">
           <ErrorIcon className="mt-0.5 flex-shrink-0" />
           <span>{errors.email.message}</span>
         </div>

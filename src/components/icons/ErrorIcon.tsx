@@ -7,7 +7,7 @@ const ErrorIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
-      className={twMerge('h-4 w-4 text-[#EF4100]', className)}
+      className={twMerge('h-4 w-4 text-red', className)}
       {...props}
     >
       <path

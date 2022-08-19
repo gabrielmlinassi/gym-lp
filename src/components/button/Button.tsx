@@ -15,7 +15,7 @@ const s = {
   root: /*tw:*/ `inline-flex items-center justify-center h-fit rounded-full font-semibold duration-150 disabled:pointer-events-none disabled:opacity-75`,
   fullWidth: /*tw:*/ `w-full`,
   variants: {
-    'filled.primary': /*tw:*/ `bg-yellow-500 text-white hover:bg-[#EE9F04]`,
+    'filled.primary': /*tw:*/ `bg-yellow-500 text-white hover:bg-yellow-550`,
     'filled.secondary': /*tw:*/ `bg-[#373E4B] text-[#97A3B7] hover:bg-[#343A47]`,
     'outlined.primary': /*tw:*/ `border border-yellow-500 text-yellow-500`,
     'outlined.secondary': /*tw:*/ `border border-[#373E4B] text-[#373E4B]`,
@@ -25,7 +25,7 @@ const s = {
     lg: /*tw:*/ `px-12 py-5 md:px-12 md:py-5`,
   },
   spinner: {
-    primary: /*tw:*/ `fill-[#bc7e03] text-white`,
+    primary: /*tw:*/ `fill-yellow-600 text-white`,
     secondary: /*tw:*/ `fill-[#292e38] text-white`,
   },
 };
