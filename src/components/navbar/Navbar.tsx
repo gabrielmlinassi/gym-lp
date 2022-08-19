@@ -1,8 +1,9 @@
+import React from 'react';
 import cn from 'classnames';
+
 import Button from 'components/button';
 import Container from 'components/container';
 import Logo from 'components/logo';
-import React from 'react';
 
 type NavbarProps = {
   absoluteNav?: boolean;
