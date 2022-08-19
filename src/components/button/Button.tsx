@@ -21,8 +21,8 @@ const s = {
     'outlined.secondary': /*tw:*/ `border border-[#373E4B] text-[#373E4B]`,
   },
   sizes: {
-    base: /*tw:*/ `px-8 py-3`,
-    lg: /*tw:*/ `px-12 py-5`,
+    base: /*tw:*/ `px-8 py-3 md:px-8 md:py-3`,
+    lg: /*tw:*/ `px-12 py-5 md:px-12 md:py-5`,
   },
   spinner: {
     primary: /*tw:*/ `fill-[#bc7e03] text-white`,

@@ -22,11 +22,13 @@ const Navbar = ({ absoluteNav, userMenu, navContainer = 'inner' }: NavbarProps) 
         <div className="flex w-full items-center justify-between">
           <Logo variant="full" />
           {userMenu && (
-            <div className="hidden flex-shrink-0 sm:inline-block">
-              <span className="mr-5 font-semibold text-[#CCD4E2]">
+            <div className="flex-shrink-0">
+              <span className="mr-5 hidden font-semibold text-[#CCD4E2] sm:inline-block">
                 Logged in as <span className="text-white">John Smith</span>
               </span>
-              <Button variant="outlined">Sign out</Button>
+              <Button variant="outlined" className="px-6 py-2">
+                Sign out
+              </Button>
             </div>
           )}
         </div>

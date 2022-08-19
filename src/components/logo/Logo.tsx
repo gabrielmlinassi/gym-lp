@@ -5,36 +5,28 @@ import NextLink from 'next/link';
 import LogoMark from '/public/logos/logo-mark.svg';
 import LogoFull from '/public/logos/logo-full.svg';
 
-type MarkOnly = {
-  variant?: 'mark';
-  size?: 'sm' | 'base';
-};
-
-type FullOnly = {
-  variant?: 'full';
-  size?: never;
-};
-
 type LogoProps = {
+  variant?: 'mark' | 'full';
   noRedirect?: boolean;
-} & (MarkOnly | FullOnly);
-
-const WidthBySize = {
-  sm: 44,
-  base: 72,
 };
 
-const Logo = ({ variant = 'mark', size = 'base', noRedirect }: LogoProps) => {
-  switch (variant) {
-    case 'full': {
-      const comp = <NextImage src={LogoFull} />;
-      return noRedirect ? comp : <WithRedirect>{comp}</WithRedirect>;
-    }
-    case 'mark': {
-      const comp = <NextImage src={LogoMark} width={WidthBySize[size]} />;
-      return noRedirect ? comp : <WithRedirect>{comp}</WithRedirect>;
-    }
-  }
+const pathByVariant = {
+  full: LogoFull,
+  mark: LogoMark,
+};
+
+const s = {
+  mark: /*tw:*/ `inline-block w-[44px] md:w-[72px]`,
+  full: /*tw:*/ `inline-block w-[170px] md:w-[290px]`,
+};
+
+const Logo = ({ variant = 'mark', noRedirect }: LogoProps) => {
+  const comp = (
+    <div className={s[variant]}>
+      <NextImage src={pathByVariant[variant]} />
+    </div>
+  );
+  return noRedirect ? comp : <WithRedirect>{comp}</WithRedirect>;
 };
 
 const WithRedirect = ({ children }: { children: React.ReactNode }) => {
