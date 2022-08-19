@@ -128,7 +128,7 @@ const Screenshots = () => {
                 key={dotIdx}
                 className={cn([
                   'h-2 w-2 rounded-full',
-                  dotIdx == activeDotIdx ? 'bg-[#FAA806]' : 'bg-[#97A3B7]',
+                  dotIdx == activeDotIdx ? 'bg-yellow-500' : 'bg-[#97A3B7]',
                 ])}
               />
             ))}

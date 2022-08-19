@@ -14,10 +14,10 @@ const classes = {
   root: /*tw:*/ `group inline-flex flex-col`,
   fullWidth: /*tw:*/ 'w-full',
   label: /*tw:*/ `mb-2 text-white select-none`,
-  inputWrap: /*tw:*/ `flex items-center gap-1.5 rounded-lg border border-[#4A5465] bg-[#252932] group-focus-within:border-[#FAA806]`,
-  input: /*tw:*/ `w-full px-4 m-1.5 bg-transparent text-white caret-[#FAA806] outline-none border-none focus:ring-0`,
+  inputWrap: /*tw:*/ `flex items-center gap-1.5 rounded-lg border border-[#4A5465] bg-[#252932] group-focus-within:border-yellow-500`,
+  input: /*tw:*/ `w-full px-4 m-1.5 bg-transparent text-white caret-yellow-500 outline-none border-none focus:ring-0`,
   btn: /*tw:*/ `mr-3 flex items-center justify-center rounded p-1 hover:bg-black hover:bg-opacity-10 outline-none`,
-  icon: /*tw:*/ `group-focus-within:text-[#FAA806]`,
+  icon: /*tw:*/ `group-focus-within:text-yellow-500`,
   error: /*tw:*/ `border-[#EF4100]`,
 };
 

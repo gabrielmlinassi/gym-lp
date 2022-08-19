@@ -26,14 +26,14 @@ const AccountPage: NextPageWithLayout = () => {
         <div className="absolute top-1/2 left-1/2 mt-4 w-full max-w-[600px] -translate-x-1/2 -translate-y-1/2 text-center lg:max-w-[800px]">
           <Logo variant="mark" size="onlyLg" noRedirect />
           <h2 className="text-base md:text-5xl">Your PeakStrength account is</h2>
-          <h1 className="text-[#FAA806]">Active</h1>
+          <h1 className="text-yellow-500">Active</h1>
         </div>
       </div>
       <div className="relative -mt-12 sm:-mt-24">
         <Container variant="inner">
           <div className="mx-auto flex max-w-[640px] flex-col items-center overflow-hidden rounded-[32px] bg-[#1E2229] p-8 sm:p-16">
             <div className="flex flex-col items-center justify-center sm:flex-row sm:items-baseline">
-              <h1 className="text-[#FAA806]">$39</h1>
+              <h1 className="text-yellow-500">$39</h1>
               <h5>
                 <span className="hidden sm:inline-block">/</span>
                 <span className="inline-block sm:hidden">per</span> month{' '}
@@ -52,7 +52,7 @@ const AccountPage: NextPageWithLayout = () => {
                     <span className="text-[#97A3B7]">Visa ending in</span> 4242
                   </span>
                 </div>
-                <div className="font-semibold text-[#FAA806]">
+                <div className="font-semibold text-yellow-500">
                   Update payment information
                 </div>
               </div>

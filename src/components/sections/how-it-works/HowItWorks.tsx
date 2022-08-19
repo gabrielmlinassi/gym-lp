@@ -52,7 +52,7 @@ const HowItWorks = () => {
             {data.map(({ step, heading, text }, i) => (
               <div key={i} className="flex flex-col">
                 <h3>
-                  <span className="mr-2 text-[#FAA806]">{step}</span>
+                  <span className="mr-2 text-yellow-500">{step}</span>
                   {heading}
                 </h3>
                 <Text size="md">{text}</Text>

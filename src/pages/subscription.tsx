@@ -55,7 +55,7 @@ const SubscriptionPage: NextPageWithLayout = () => {
         <div style={gradientStyle} className="absolute inset-0" />
         <div className="absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 pl-4 pr-8 text-center">
           <Logo variant="mark" size="onlyLg" />
-          <h1 className="mt-2 text-[#FAA806]">Premium</h1>
+          <h1 className="mt-2 text-yellow-500">Premium</h1>
           <h2>Strength training</h2>
           <Text size="2xl" className="mb-4">
             is just few clicks away
@@ -75,7 +75,7 @@ const SubscriptionPage: NextPageWithLayout = () => {
         <Container variant="inner">
           <div className="flex flex-col overflow-hidden rounded-[32px] bg-[#1E2229] lg:flex-row">
             <div className="grow p-8 sm:p-16">
-              <h1 className="text-[#FAA806]">10% off</h1>
+              <h1 className="text-yellow-500">10% off</h1>
               <h5>
                 your first month for a limited time.
                 <br className="hidden sm:block" /> No risk, cancel anytime.

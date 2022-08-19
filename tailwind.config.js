@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -31,6 +32,29 @@ module.exports = {
         'fade-in': 'fade-in 0.2s ease',
         'fade-out': 'fade-out 0.2s ease',
       },
+    },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      gray: {
+        100: '#F8F8F9',
+        200: '#CCD4E2',
+        300: '#97A3B7',
+        400: '#4A5465',
+        450: '#343A47',
+        475: '#373E4B',
+        500: '#292E38',
+        550: '#252932',
+        600: '#1E2229',
+      },
+      yellow: {
+        500: '#FAA806',
+        550: '#EE9F04',
+        600: '#BC7E03',
+      },
+      red: '#EF4100',
     },
   },
   plugins: [

@@ -100,8 +100,8 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
             ? { href: '', as: '/signup', replace: true, scroll: false }
             : { href: '/signup' })}
         >
-          <a className="mt-0.5 font-industry font-semibold uppercase text-[#FAA806] text-opacity-50 decoration-2 underline-offset-[3px] hover:underline">
-            <span className="text-[#FAA806]">Register here</span>
+          <a className="mt-0.5 font-industry font-semibold uppercase text-yellow-500 text-opacity-50 decoration-2 underline-offset-[3px] hover:underline">
+            <span className="text-yellow-500">Register here</span>
           </a>
         </NextLink>
       </div>

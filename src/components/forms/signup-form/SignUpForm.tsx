@@ -82,7 +82,7 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
           <>
             I confirm I&apos;ve read and accept{' '}
             <NextLink href="/terms">
-              <a className="text-[#FAA806]" tabIndex={-1}>
+              <a className="text-yellow-500" tabIndex={-1}>
                 terms &amp; conditions
               </a>
             </NextLink>
@@ -117,8 +117,8 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
             ? { href: '', as: '/signin', replace: true, scroll: false }
             : { href: '/signin' })}
         >
-          <a className="mt-0.5 font-industry font-semibold uppercase text-[#FAA806] text-opacity-50 decoration-2 underline-offset-[3px] hover:underline">
-            <span className="text-[#FAA806]">Log in here</span>
+          <a className="mt-0.5 font-industry font-semibold uppercase text-yellow-500 text-opacity-50 decoration-2 underline-offset-[3px] hover:underline">
+            <span className="text-yellow-500">Log in here</span>
           </a>
         </NextLink>
       </div>

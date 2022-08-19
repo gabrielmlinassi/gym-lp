@@ -15,9 +15,9 @@ const s = {
   root: /*tw:*/ `inline-flex items-center justify-center h-fit rounded-full font-semibold duration-150 disabled:pointer-events-none disabled:opacity-75`,
   fullWidth: /*tw:*/ `w-full`,
   variants: {
-    'filled.primary': /*tw:*/ `bg-[#FAA806] text-[#FFFFFF] hover:bg-[#EE9F04]`,
+    'filled.primary': /*tw:*/ `bg-yellow-500 text-white hover:bg-[#EE9F04]`,
     'filled.secondary': /*tw:*/ `bg-[#373E4B] text-[#97A3B7] hover:bg-[#343A47]`,
-    'outlined.primary': /*tw:*/ `border border-[#FAA806] text-[#FAA806]`,
+    'outlined.primary': /*tw:*/ `border border-yellow-500 text-yellow-500`,
     'outlined.secondary': /*tw:*/ `border border-[#373E4B] text-[#373E4B]`,
   },
   sizes: {
