@@ -1,14 +1,15 @@
-import React from 'react';
-import { signOut } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
+import { signOut, useSession } from 'next-auth/react';
 import cn from 'classnames';
 
 import Button from 'components/button';
 import Container from 'components/container';
 import Logo from 'components/logo';
+import { getViewer, ViewerQueryResp } from 'services/auth.service';
 
 type NavbarProps = {
   absoluteNav?: boolean;
-  userMenu?: boolean;
+  userMenu?: boolean; //TODO: showUserMenu
   navContainer?: React.ComponentProps<typeof Container>['variant'];
 };
 
@@ -18,28 +19,45 @@ const s = {
 };
 
 const Navbar = ({ absoluteNav, userMenu, navContainer = 'inner' }: NavbarProps) => {
+  const { status } = useSession();
+
   return (
     <nav className={cn(s.root, [absoluteNav && s.absolute])}>
       <Container variant={navContainer}>
         <div className="flex w-full items-center justify-between">
           <Logo variant="full" />
-          {userMenu && (
-            <div className="flex-shrink-0">
-              <span className="mr-5 hidden font-semibold text-[#CCD4E2] sm:inline-block">
-                Logged in as <span className="text-white">John Smith</span>
-              </span>
-              <Button
-                variant="outlined"
-                onClick={() => signOut({ callbackUrl: '/' })}
-                className="px-6 py-2"
-              >
-                Sign out
-              </Button>
-            </div>
-          )}
+          {userMenu && status == 'authenticated' && <UserMenu />}
         </div>
       </Container>
     </nav>
+  );
+};
+
+const UserMenu = () => {
+  const [me, setMe] = useState<ViewerQueryResp['data']['me']>();
+
+  // TODO: Replace this by SWR?
+  useEffect(() => {
+    getViewer().then(({ me }) => {
+      setMe(me);
+    });
+  }, []);
+
+  return (
+    <div className="flex-shrink-0">
+      {me && (
+        <span className="mr-5 hidden font-semibold text-[#CCD4E2] sm:inline-block">
+          Logged in as <span className="text-white">{me.user.name}</span>
+        </span>
+      )}
+      <Button
+        variant="outlined"
+        onClick={() => signOut({ callbackUrl: '/' })}
+        className="px-6 py-2"
+      >
+        Sign out
+      </Button>
+    </div>
   );
 };
 

@@ -1,4 +1,6 @@
 import axios, { AxiosError } from 'axios';
+import { getToken } from 'next-auth/jwt';
+import { getSession } from 'next-auth/react';
 
 interface RegisterMutationArgs {
   name: string;
@@ -33,15 +35,31 @@ export interface LoginMutationResp {
   };
 }
 
-interface ViewerQueryResp {
+export interface ViewerQueryResp {
   errors: [{ message: string }];
-  data: any;
+  data: {
+    me: {
+      id: string;
+      user: {
+        email: string;
+        name: string;
+      };
+    };
+  };
 }
 
 export const api = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
+});
+
+api.interceptors.request.use(async (config) => {
+  if (config.headers) {
+    const session = await getSession();
+    config.headers.Authorization = `Bearer ${session?.accessToken || ''}`;
+  }
+  return config;
 });
 
 const registerMutation = ({ email, password, name }: RegisterMutationArgs) =>
@@ -107,7 +125,7 @@ export async function registerUser(args: RegisterMutationArgs) {
     };
   } catch (err) {
     const error = err as Error | AxiosError;
-    console.log('error:', error);
+    console.log('registerUser err:', error);
     return {
       error: {
         message: 'Something went wrong registering',
@@ -140,6 +158,7 @@ export async function getViewer() {
       errors: data?.errors && data.errors,
     };
   } catch (err) {
+    console.log('getViewer, err:', err);
     return { error: { message: 'Something went wrong loging in' } };
   }
 }
