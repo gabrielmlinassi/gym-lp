@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import NextImage from 'next/image';
 import NextLink from 'next/link';
@@ -34,12 +34,8 @@ const SubscriptionPage: NextPageWithLayout = () => {
   const router = useRouter();
   const [plan, setPlan] = useState<PlanEnum>('monthly');
 
-  useEffect(() => {
-    console.log({ plan });
-  }, [plan]);
-
   const onOpenChange = (open: boolean) => {
-    router.push('', open ? '/signup' : '', { scroll: false });
+    router.push('', open ? '/signup' : '', { scroll: false, shallow: true });
   };
 
   return (

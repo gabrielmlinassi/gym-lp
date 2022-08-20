@@ -1,4 +1,3 @@
-import type { GetServerSideProps } from 'next';
 import NextImage from 'next/image';
 import { NextPageWithLayout } from './_app';
 
@@ -11,16 +10,13 @@ import Layout from 'components/layout';
 import athleteImg from '/public/images/bg-athlete-1.png';
 import appStoreImg from '/public/images/app-store.png';
 import googlePlayImg from '/public/images/google-play.png';
-import { api, getViewer } from 'services/auth.service';
-import { getSession } from 'next-auth/react';
 
 const gradientStyle = {
   /** Workaround to TW lack of support for gradient percentage stops */
   background: `linear-gradient(90deg, rgba(37, 41, 50, 0.9) 50%, rgba(37, 41, 50, 0) 100%)`,
 };
 
-const AccountPage: NextPageWithLayout = ({ me }) => {
-  console.log({ me });
+const AccountPage: NextPageWithLayout = () => {
   return (
     <div>
       <div className="relative h-[325px] sm:h-[500px]">
@@ -73,28 +69,6 @@ const AccountPage: NextPageWithLayout = ({ me }) => {
       </div>
     </div>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/subscription',
-      },
-      props: {},
-    };
-  }
-
-  api.defaults.headers.common.Authorization = `Bearer ${session?.accessToken}`;
-  const { me } = await getViewer();
-
-  return {
-    props: {
-      me: me,
-    },
-  };
 };
 
 AccountPage.getLayout = (page) => {

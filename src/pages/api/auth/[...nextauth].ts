@@ -1,8 +1,8 @@
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { loginUser } from 'services/auth.service';
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     Credentials({
       credentials: {
@@ -37,7 +37,10 @@ export default NextAuth({
       return session;
     },
   },
-  pages: {
-    signIn: '/signin',
-  },
+};
+
+export default NextAuth({
+  ...authOptions,
+  secret: process.env.SECRET,
+  pages: { signIn: '/signin' },
 });

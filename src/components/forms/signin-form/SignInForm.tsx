@@ -1,18 +1,17 @@
 import React from 'react';
 import NextLink from 'next/link';
-import NextRouter, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { signIn } from 'next-auth/react';
 
 import Button from 'components/button';
 import TextField from 'components/text-field';
 import Text from 'components/Text';
 import OAuth2 from '@forms/OAuth2';
 import { ErrorIcon } from '@icons/ErrorIcon';
-
-import * as auth from 'services/auth.service';
-import { signIn } from 'next-auth/react';
+import { SignInResponse } from 'next-auth/react';
 
 type SignInFormProps = {
   samePageRouting?: boolean;
@@ -45,16 +44,16 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
   });
 
   const onSubmit = async (data: SignInFormFields) => {
-    signIn('credentials', {
+    await signIn('credentials', {
       email: data.email,
       password: data.pwd,
       redirect: false,
-    }).then(({ ok, error }) => {
+    }).then((response) => {
+      console.log('SignInForm response:', response);
+      const { ok, error } = response as SignInResponse;
       if (ok) {
-        alert('Logged In...');
         router.push('/account');
-      } else {
-        console.log({ error });
+      } else if (error) {
         const { errors } = JSON.parse(error);
         setError('email', { message: errors[0].message });
         setError('pwd', {});
@@ -113,7 +112,7 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
         </Text>
         <NextLink
           {...(samePageRouting
-            ? { href: '', as: '/signup', replace: true, scroll: false }
+            ? { href: '', as: '/signup', replace: true, scroll: false, shallow: true }
             : { href: '/signup' })}
         >
           <a className="mt-0.5 font-industry font-semibold uppercase text-yellow-500 text-opacity-50 decoration-2 underline-offset-[3px] hover:underline">

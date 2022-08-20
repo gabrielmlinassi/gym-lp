@@ -1,16 +1,17 @@
 import React from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { signIn, SignInResponse } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import * as auth from 'services/auth.service';
 import Button from 'components/button';
 import TextField from 'components/text-field';
 import Checkbox from 'components/checkbox';
 import Text from 'components/Text';
 import OAuth2 from '@forms/OAuth2';
-
-import * as auth from 'services/auth.service';
 
 type SignUpFormProps = {
   samePageRouting?: boolean;
@@ -35,6 +36,7 @@ export const schema = yup
   .required();
 
 const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProps) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -51,17 +53,19 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
       password: data.pwd,
       name: data.fullName,
     });
-    if (registerError) return setError('email', { message: registerError.message });
 
-    console.log("All good! Let's login...");
+    if (registerError) {
+      return setError('email', { message: registerError.message });
+    }
 
-    const { error: loginError } = await auth.loginUser({
+    await signIn('credentials', {
       email: data.email,
       password: data.pwd,
+      redirect: false,
+    }).then((response) => {
+      const { ok } = response as SignInResponse;
+      if (ok) router.push('/account');
     });
-
-    if (loginError) return alert(loginError.message);
-    alert('logged in!');
   };
 
   return (
@@ -129,7 +133,7 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
         </Text>
         <NextLink
           {...(samePageRouting
-            ? { href: '', as: '/signin', replace: true, scroll: false }
+            ? { href: '', as: '/signin', replace: true, scroll: false, shallow: true }
             : { href: '/signin' })}
         >
           <a className="mt-0.5 font-industry font-semibold uppercase text-yellow-500 text-opacity-50 decoration-2 underline-offset-[3px] hover:underline">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { signOut } from 'next-auth/react';
 import cn from 'classnames';
 
 import Button from 'components/button';
@@ -27,7 +28,11 @@ const Navbar = ({ absoluteNav, userMenu, navContainer = 'inner' }: NavbarProps) 
               <span className="mr-5 hidden font-semibold text-[#CCD4E2] sm:inline-block">
                 Logged in as <span className="text-white">John Smith</span>
               </span>
-              <Button variant="outlined" className="px-6 py-2">
+              <Button
+                variant="outlined"
+                onClick={() => signOut({ callbackUrl: '/' })}
+                className="px-6 py-2"
+              >
                 Sign out
               </Button>
             </div>

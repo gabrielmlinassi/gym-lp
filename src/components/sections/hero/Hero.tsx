@@ -14,7 +14,7 @@ const Hero = () => {
   const router = useRouter();
 
   const onOpenChange = (open: boolean) => {
-    router.replace('', open ? '/signup' : '', { scroll: false });
+    router.replace('', open ? '/signup' : '', { scroll: false, shallow: true });
   };
 
   return (
@@ -34,7 +34,7 @@ const Hero = () => {
           hydratation error. It's possibility something on Radix side. Wait for new versions. */}
           <div className="hidden sm:block">
             <SigninDialog onOpenChange={onOpenChange}>
-              <Button>Start free trial</Button>
+              <Button>Start free trial dialog</Button>
             </SigninDialog>
           </div>
           <div className="block sm:hidden">
@@ -58,6 +58,7 @@ const Hero = () => {
           <NextImage
             src={ScreenshotHeroCombo}
             layout="fill"
+            placeholder="blur"
             priority
             quality={100}
             objectFit="contain"
