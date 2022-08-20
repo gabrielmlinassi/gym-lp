@@ -1,7 +1,4 @@
 import axios, { AxiosError } from 'axios';
-import { unstable_getServerSession } from 'next-auth';
-import { getToken } from 'next-auth/jwt';
-import { getSession } from 'next-auth/react';
 
 interface RegisterMutationArgs {
   name: string;
@@ -41,10 +38,8 @@ interface ViewerQueryResp {
   data: any;
 }
 
-const API_URL = 'https://api-stage.peakstrength.app/graphql';
-
 export const api = axios.create({
-  baseURL: API_URL,
+  baseURL: process.env.API_URL,
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
 });
@@ -142,11 +137,9 @@ export async function getViewer() {
     const data = response.data as ViewerQueryResp;
     return {
       me: data.data && data.data.me,
-      error: data?.errors && data.errors[0],
+      errors: data?.errors && data.errors,
     };
   } catch (err) {
-    const error = err as Error | AxiosError;
-    // console.log('getViewer, error:', error);
     return { error: { message: 'Something went wrong loging in' } };
   }
 }
