@@ -10,6 +10,8 @@ import Checkbox from 'components/checkbox';
 import Text from 'components/Text';
 import OAuth2 from '@forms/OAuth2';
 
+import * as auth from 'services/auth.service';
+
 type SignUpFormProps = {
   samePageRouting?: boolean;
   autoFocus?: boolean;
@@ -44,9 +46,22 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
   });
 
   const onSubmit = async (data: SignUpFormFields) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setError('email', { message: 'Email already exists' });
-    console.log(data);
+    const { error: registerError } = await auth.registerUser({
+      email: data.email,
+      password: data.pwd,
+      name: data.fullName,
+    });
+    if (registerError) return setError('email', { message: registerError.message });
+
+    console.log("All good! Let's login...");
+
+    const { error: loginError } = await auth.loginUser({
+      email: data.email,
+      password: data.pwd,
+    });
+
+    if (loginError) return alert(loginError.message);
+    alert('logged in!');
   };
 
   return (

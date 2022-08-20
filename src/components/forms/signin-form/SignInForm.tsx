@@ -10,6 +10,8 @@ import Text from 'components/Text';
 import OAuth2 from '@forms/OAuth2';
 import { ErrorIcon } from '@icons/ErrorIcon';
 
+import * as auth from 'services/auth.service';
+
 type SignInFormProps = {
   samePageRouting?: boolean;
   autoFocus?: boolean;
@@ -40,10 +42,18 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
   });
 
   const onSubmit = async (data: SignInFormFields) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setError('email', { message: "Email and password don't match. Try again." });
-    setError('pwd', {});
-    console.log(data);
+    const { error: loginError } = await auth.loginUser({
+      email: data.email,
+      password: data.pwd,
+    });
+
+    if (loginError) {
+      setError('email', { message: loginError.message });
+      setError('pwd', {});
+      return;
+    }
+
+    alert('Logged In...');
   };
 
   return (
