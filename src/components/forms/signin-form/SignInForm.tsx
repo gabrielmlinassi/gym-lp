@@ -1,5 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
+import NextRouter, { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -11,6 +12,7 @@ import OAuth2 from '@forms/OAuth2';
 import { ErrorIcon } from '@icons/ErrorIcon';
 
 import * as auth from 'services/auth.service';
+import { signIn } from 'next-auth/react';
 
 type SignInFormProps = {
   samePageRouting?: boolean;
@@ -31,6 +33,7 @@ export const schema = yup
   .required();
 
 const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProps) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -42,18 +45,21 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
   });
 
   const onSubmit = async (data: SignInFormFields) => {
-    const { error: loginError } = await auth.loginUser({
+    signIn('credentials', {
       email: data.email,
       password: data.pwd,
+      redirect: false,
+    }).then(({ ok, error }) => {
+      if (ok) {
+        alert('Logged In...');
+        router.push('/account');
+      } else {
+        console.log({ error });
+        const { errors } = JSON.parse(error);
+        setError('email', { message: errors[0].message });
+        setError('pwd', {});
+      }
     });
-
-    if (loginError) {
-      setError('email', { message: loginError.message });
-      setError('pwd', {});
-      return;
-    }
-
-    alert('Logged In...');
   };
 
   return (

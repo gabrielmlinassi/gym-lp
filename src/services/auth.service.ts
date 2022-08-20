@@ -1,5 +1,7 @@
 import axios, { AxiosError } from 'axios';
-import { setCookie, deleteCookie, getCookie } from 'cookies-next';
+import { unstable_getServerSession } from 'next-auth';
+import { getToken } from 'next-auth/jwt';
+import { getSession } from 'next-auth/react';
 
 interface RegisterMutationArgs {
   name: string;
@@ -20,12 +22,12 @@ interface RegisterMutationResp {
   };
 }
 
-interface LoginMutationArgs {
+export interface LoginMutationArgs {
   email: string;
   password: string;
 }
 
-interface LoginMutationResp {
+export interface LoginMutationResp {
   errors: [{ message: string }];
   data: {
     login: {
@@ -41,22 +43,10 @@ interface ViewerQueryResp {
 
 const API_URL = 'https://api-stage.peakstrength.app/graphql';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: API_URL,
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-api.interceptors.request.use(async (config) => {
-  if (config.headers) {
-    console.log('interceptor...');
-    const token = await getToken();
-    console.log('interceptor token', token);
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
+  headers: { 'Content-Type': 'application/json' },
 });
 
 const registerMutation = ({ email, password, name }: RegisterMutationArgs) =>
@@ -79,7 +69,7 @@ const registerMutation = ({ email, password, name }: RegisterMutationArgs) =>
     },
   });
 
-const loginMutation = ({ email, password }: LoginMutationArgs) =>
+export const loginMutation = ({ email, password }: LoginMutationArgs) =>
   JSON.stringify({
     query: /* GraphQL */ `
       mutation Login($data: UsersPermissionsLoginInput!) {
@@ -96,7 +86,7 @@ const loginMutation = ({ email, password }: LoginMutationArgs) =>
     },
   });
 
-const viewerQuery = () =>
+export const viewerQuery = () =>
   JSON.stringify({
     query: /* GraphQL */ `
       query GetViewer {
@@ -135,31 +125,14 @@ export async function loginUser(args: LoginMutationArgs) {
   try {
     const response = await api({ data: loginMutation(args) });
     const data = response.data as LoginMutationResp;
-
-    console.log('login resp:', data);
-
-    const error = data?.errors && data.errors[0];
-
-    if (error) {
-      // Delete jwt from cookie
-      deleteCookie('peakstrength-jwt');
-    } else {
-      // Save jwt to cookie
-      setCookie('peakstrength-jwt', data.data.login.jwt);
-    }
-
     return {
       jwt: data.data && data.data.login.jwt,
-      error,
+      errors: data?.errors && data.errors,
     };
   } catch (err) {
     const error = err as Error | AxiosError;
-    console.log('error:', error);
-    return {
-      error: {
-        message: 'Something went wrong loging in',
-      },
-    };
+    console.log('loginUser, error:', error);
+    return { error: { message: 'Something went wrong loging in' } };
   }
 }
 
@@ -167,20 +140,13 @@ export async function getViewer() {
   try {
     const response = await api({ data: viewerQuery() });
     const data = response.data as ViewerQueryResp;
-
-    console.log('Viewer resp:', data);
-
     return {
-      jwt: data.data && data.data.login.jwt,
+      me: data.data && data.data.me,
       error: data?.errors && data.errors[0],
     };
   } catch (err) {
     const error = err as Error | AxiosError;
-    // console.log('error:', error);
-    return {
-      error: {
-        message: 'Something went wrong loging in',
-      },
-    };
+    // console.log('getViewer, error:', error);
+    return { error: { message: 'Something went wrong loging in' } };
   }
 }
