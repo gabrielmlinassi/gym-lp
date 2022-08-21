@@ -48,14 +48,14 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
       email: data.email,
       password: data.pwd,
       redirect: false,
-    }).then(async (response) => {
-      await router.push('/account');
-      /*const { error } = response as SignInResponse;
-      if (error) {
-        const { errors } = JSON.parse(error);
+    }).then((response) => {
+      if (response?.ok) {
+        window.location.replace('/account');
+      } else if (response?.error) {
+        const { errors } = JSON.parse(response.error);
         setError('email', { message: errors[0].message });
         setError('pwd', {});
-      }*/
+      }
     });
   };
 
