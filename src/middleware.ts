@@ -7,24 +7,23 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }*/
 
-  if (req.nextUrl.pathname === '/account') {
-    const session = await getToken({ req, secret: process.env.SECRET });
-    console.log('middleware /account:', { pathname: req.nextUrl.pathname }, { session });
-    if (!session) return NextResponse.redirect(new URL('/subscription', req.url));
-  }
+  const session = await getToken({ req });
+  console.log('middleware ==========>', { session });
+
+  if (!session) return NextResponse.redirect(new URL('/signin', req.url));
 
   /*if (
     req.nextUrl.pathname.startsWith('/signin') ||
     req.nextUrl.pathname.startsWith('/signup')
   ) {
-    const session = await getToken({ req, secret: process.env.SECRET });
+    const session = await getToken({ req });
     if (session) return NextResponse.redirect(new URL('/account', req.url));
   }*/
 
-  // return NextResponse.next();
+  return NextResponse.next();
 }
 
-function shouldExclude(request: NextRequest) {
+/*function shouldExclude(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   return (
@@ -33,4 +32,4 @@ function shouldExclude(request: NextRequest) {
     path.includes('.') || // exclude all files in the public folder
     path.startsWith('_next')
   );
-}
+}*/
