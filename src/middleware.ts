@@ -13,7 +13,11 @@ export async function middleware(req: NextRequest) {
   }
 
   if (req.nextUrl.pathname === '/account') {
+    console.log('=========================================');
+    console.log("req.nextUrl.pathname === '/account'");
     const session = await getToken({ req });
+    console.log('session', session);
+    console.log('=========================================');
     if (!session) return NextResponse.redirect(new URL('/signin', req.url));
   }
 
