@@ -9,15 +9,14 @@ export async function middleware(req: NextRequest) {
 
   if (req.nextUrl.pathname === '/signin' || req.nextUrl.pathname === '/signup') {
     const session = await getToken({ req });
-    if (session) return NextResponse.redirect(new URL('/account', req.url));
+    if (session) {
+      console.log('this should not execute if route /signup and no session', session);
+      return NextResponse.redirect(new URL('/account', req.url));
+    }
   }
 
   if (req.nextUrl.pathname === '/account') {
-    console.log('=========================================');
-    console.log("req.nextUrl.pathname === '/account'");
     const session = await getToken({ req });
-    console.log('session', session);
-    console.log('=========================================');
     if (!session) return NextResponse.redirect(new URL('/signin', req.url));
   }
 
