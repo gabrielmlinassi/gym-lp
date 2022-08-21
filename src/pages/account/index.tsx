@@ -1,5 +1,5 @@
 import NextImage from 'next/image';
-import { NextPageWithLayout } from './_app';
+import { NextPageWithLayout } from '../_app';
 
 import Container from 'components/container';
 import { CardIcon } from '@icons/CardIcon';
