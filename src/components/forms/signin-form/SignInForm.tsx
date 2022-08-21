@@ -1,6 +1,5 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -11,7 +10,6 @@ import TextField from 'components/text-field';
 import Text from 'components/Text';
 import OAuth2 from '@forms/OAuth2';
 import { ErrorIcon } from '@icons/ErrorIcon';
-import { SignInResponse } from 'next-auth/react';
 
 type SignInFormProps = {
   samePageRouting?: boolean;
@@ -32,7 +30,6 @@ export const schema = yup
   .required();
 
 const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProps) => {
-  const router = useRouter();
   const {
     register,
     handleSubmit,

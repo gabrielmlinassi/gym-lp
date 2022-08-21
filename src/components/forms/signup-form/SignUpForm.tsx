@@ -1,12 +1,11 @@
 import React from 'react';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import { signIn, SignInResponse } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import * as auth from 'services/auth.service';
+import { registerUser } from 'services/auth.service';
 import Button from 'components/button';
 import TextField from 'components/text-field';
 import Checkbox from 'components/checkbox';
@@ -36,7 +35,6 @@ export const schema = yup
   .required();
 
 const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProps) => {
-  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -48,7 +46,7 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
   });
 
   const onSubmit = async (data: SignUpFormFields) => {
-    const { error: registerError } = await auth.registerUser({
+    const { error: registerError } = await registerUser({
       email: data.email,
       password: data.pwd,
       name: data.fullName,
@@ -63,8 +61,9 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
       password: data.pwd,
       redirect: false,
     }).then((response) => {
-      const { ok } = response as SignInResponse;
-      if (ok) router.push('/account');
+      if (response?.ok) {
+        window.location.replace('/account');
+      }
     });
   };
 

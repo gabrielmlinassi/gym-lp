@@ -1,13 +1,20 @@
-import { withAuth } from 'next-auth/middleware';
+import { getToken } from 'next-auth/jwt';
+import { NextRequest, NextResponse } from 'next/server';
 
-// what if I'd also would like to redirect from
-// signin and signup to account if there's a token
-export default withAuth({
-  callbacks: {
-    authorized: ({ token }) => {
-      return !!token;
-    },
-  },
-});
+export default async function middleware(req: NextRequest) {
+  const pathname = req.nextUrl.pathname;
 
-export const config = { matcher: ['/account/:path*'] };
+  if (pathname === '/signin' || pathname === '/signup') {
+    const token = await getToken({ req });
+    if (token) return NextResponse.redirect(new URL('/account', req.url));
+  }
+
+  if (pathname.startsWith('/account')) {
+    const token = await getToken({ req });
+    if (!token) return NextResponse.redirect(new URL('/signin', req.url));
+  }
+
+  return NextResponse.next();
+}
+
+export const config = { matcher: ['/account/:path*', '/signin', '/signup'] };
