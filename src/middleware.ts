@@ -7,18 +7,15 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }*/
 
-  const session = await getToken({ req });
-  console.log('middleware ==========>', { session });
-
-  if (!session) return NextResponse.redirect(new URL('/signin', req.url));
-
-  /*if (
-    req.nextUrl.pathname.startsWith('/signin') ||
-    req.nextUrl.pathname.startsWith('/signup')
-  ) {
+  if (req.nextUrl.pathname === '/signin' || req.nextUrl.pathname === '/signup') {
     const session = await getToken({ req });
     if (session) return NextResponse.redirect(new URL('/account', req.url));
-  }*/
+  }
+
+  if (req.nextUrl.pathname === '/account') {
+    const session = await getToken({ req });
+    if (!session) return NextResponse.redirect(new URL('/signin', req.url));
+  }
 
   return NextResponse.next();
 }
