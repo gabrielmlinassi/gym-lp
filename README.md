@@ -1,3 +1,5 @@
+It's common practice to use 200 for all GraphQL requests. When errors happen, they're put in the "errors" key. Non-200 response codes indicate that some issue occurred at the HTTP transport layer, not the GraphQL layer.
+
 # My default FE template starter
 
 **Intellisense for CSS Modules:**
