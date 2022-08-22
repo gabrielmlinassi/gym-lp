@@ -34,7 +34,7 @@ const Hero = () => {
           hydratation error. It's possibility something on Radix side. Wait for new versions. */}
           <div className="hidden sm:block">
             <SigninDialog onOpenChange={onOpenChange}>
-              <Button>Start free trial dialog</Button>
+              <Button>Start free trial</Button>
             </SigninDialog>
           </div>
           <div className="block sm:hidden">
