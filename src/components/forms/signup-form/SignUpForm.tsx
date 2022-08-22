@@ -118,14 +118,14 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
           Register
         </Button>
       </div>
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <div className="flex items-center gap-2">
           <hr className="w-full border-gray-400" />
           <span className="font-industry text-white">OR</span>
           <hr className="w-full border-gray-400" />
         </div>
       </div>
-      <OAuth2 />
+      <OAuth2 /> */}
       <div className="mt-6 text-center">
         <Text size="base" className="font-semibold text-white">
           Have an account?

@@ -93,6 +93,7 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
           Log In
         </Button>
       </div>
+      {/* TODO: feature flag? NOTE: Social login not needed for this first release
       <div className="mt-6">
         <div className="flex items-center gap-2">
           <hr className="w-full border-gray-400" />
@@ -100,7 +101,7 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
           <hr className="w-full border-gray-400" />
         </div>
       </div>
-      <OAuth2 />
+      <OAuth2 /> */}
       <div className="mt-6 text-center">
         <Text size="base" className="font-semibold text-white">
           Don&apos;t Have an account?
