@@ -5,6 +5,8 @@ import { ErrorIcon, EyeIcon, EyeOffIcon } from 'components/icons';
 type TextFieldProps = {
   label: string;
   fullWidth?: boolean;
+  /** If it's `string`, it will show the red border around the input and the error text below it.
+   *  If it's a boolean `true` it will show only the red border around the input without the text */
   error?: string | boolean;
   /** This component doesn't accept type='checkbox'. Please, use Checkbox component instead */
   type: Exclude<React.ComponentProps<'input'>['type'], 'checkbox'>;

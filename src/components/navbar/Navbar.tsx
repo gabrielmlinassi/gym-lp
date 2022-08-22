@@ -5,7 +5,7 @@ import cn from 'classnames';
 import Button from 'components/button';
 import Container from 'components/container';
 import Logo from 'components/logo';
-import { getViewer, ViewerQueryResp } from 'services/auth.service';
+import { getViewer } from 'services/auth.service';
 
 type NavbarProps = {
   absoluteNav?: boolean;
@@ -34,7 +34,7 @@ const Navbar = ({ absoluteNav, userMenu, navContainer = 'inner' }: NavbarProps) 
 };
 
 const UserMenu = () => {
-  const [me, setMe] = useState<ViewerQueryResp['data']['me']>();
+  const [me, setMe] = useState<Awaited<ReturnType<typeof getViewer>>['me']>();
 
   // TODO: Replace this by SWR?
   useEffect(() => {

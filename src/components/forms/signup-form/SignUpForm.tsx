@@ -46,14 +46,14 @@ const SignUpForm = ({ samePageRouting = true, autoFocus = true }: SignUpFormProp
   });
 
   const onSubmit = async (data: SignUpFormFields) => {
-    const { error: registerError } = await registerUser({
+    const { errors: registerErrors } = await registerUser({
       email: data.email,
       password: data.pwd,
       name: data.fullName,
     });
 
-    if (registerError) {
-      return setError('email', { message: registerError.message });
+    if (registerErrors) {
+      return setError('email', { message: registerErrors[0].message });
     }
 
     await signIn('credentials', {
