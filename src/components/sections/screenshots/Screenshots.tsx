@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import NextImage, { StaticImageData } from 'next/image';
 import cn from 'classnames';
 import useEmblaCarousel from 'embla-carousel-react';
+import { motion, useAnimation, useInView } from 'framer-motion';
 
 import { useMediaQuery } from 'hooks';
 import Text from 'components/Text';
@@ -13,6 +14,17 @@ import img2B from '/public/images/screenshot-workout-active.png';
 import img3A from '/public/images/screenshot-replace-confirm.png';
 import img3B from '/public/images/screenshot-replace-selection.png';
 
+const variants = {
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: i * 0.3,
+    },
+  }),
+  hidden: { opacity: 0, x: -20 },
+};
+
 const Screenshots = () => {
   const [emblaRef, embla] = useEmblaCarousel({ align: 'start' });
   const [emblaIsActive, setEmblaIsActive] = useState(false);
@@ -20,11 +32,19 @@ const Screenshots = () => {
   const [selectedScreenshotIdx, setSelectedScreenshotIdx] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
   const isTabletOrLower = useMediaQuery('(max-width: 1024px)');
+  const controls = useAnimation();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.3, once: true });
 
   const onSelect = useCallback(() => {
     if (!embla) return;
     setSelectedScreenshotIdx(embla.selectedScrollSnap());
   }, [embla, setSelectedScreenshotIdx]);
+
+  useEffect(() => {
+    if (inView) controls.start('visible');
+    else controls.start('hidden');
+  }, [controls, inView, selectedContentIdx]);
 
   useEffect(() => {
     if (isTabletOrLower) {
@@ -71,51 +91,49 @@ const Screenshots = () => {
           </div>
         </div>
         {/* ---- screenshots ----- */}
-        <div className="overflow-hidden">
-          <div ref={emblaIsActive ? emblaRef : null} className="overflow-hidden">
-            <div className="ml-6 flex h-[600px] gap-1">
-              <div className="relative w-[300px] flex-shrink-0">
-                <NextImage
-                  src={data[selectedContentIdx].screens[0]}
-                  placeholder="blur"
-                  quality={100}
-                  layout="fill"
-                  objectFit="contain"
-                  sizes="350px"
-                />
-                <NextImage
-                  // Prefetch screenshot of next content
-                  // PS. 2 in ..% 2 is the amount of screenshots for the selected content
-                  src={data[(selectedContentIdx + 1) % data.length].screens[0]}
-                  placeholder="blur"
-                  className="invisible" // For prefeching purposes
-                  quality={100}
-                  layout="fill"
-                  objectFit="contain"
-                  sizes="350px"
-                />
-              </div>
-              <div className="relative w-[300px] flex-shrink-0">
-                <NextImage
-                  src={data[selectedContentIdx].screens[1]}
-                  placeholder="blur"
-                  quality={100}
-                  layout="fill"
-                  objectFit="contain"
-                  sizes="350px"
-                />
-                <NextImage
-                  // Prefetch screenshot of next content
-                  src={data[(selectedContentIdx + 1) % data.length].screens[1]}
-                  placeholder="blur"
-                  className="invisible" // For prefeching purposes
-                  quality={100}
-                  layout="fill"
-                  objectFit="contain"
-                  sizes="350px"
-                />
-              </div>
-            </div>
+        <div ref={ref} className="overflow-hidden">
+          <div ref={emblaIsActive ? emblaRef : null}>
+            <motion.div className="ml-6 flex h-[600px] gap-1">
+              {data[selectedContentIdx].screens.map((screen, idx) => {
+                const key = `content-${selectedContentIdx}-screen-${idx}`;
+                return (
+                  <motion.div
+                    key={key}
+                    custom={idx}
+                    initial="hidden"
+                    animate={controls}
+                    variants={variants}
+                    className="relative w-[300px] flex-shrink-0"
+                  >
+                    <NextImage
+                      src={screen}
+                      placeholder="blur"
+                      quality={100}
+                      layout="fill"
+                      objectFit="contain"
+                      sizes="350px"
+                    />
+                    {/* Prefetch screenshots of next content */}
+                    <NextImage
+                      src={data[(selectedContentIdx + 1) % data.length].screens[0]}
+                      className="invisible"
+                      quality={100}
+                      layout="fill"
+                      objectFit="contain"
+                      sizes="350px"
+                    />
+                    <NextImage
+                      src={data[(selectedContentIdx + 1) % data.length].screens[1]}
+                      className="invisible"
+                      quality={100}
+                      layout="fill"
+                      objectFit="contain"
+                      sizes="350px"
+                    />
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
           <div className="mt-2 flex items-center justify-center gap-1">
             {scrollSnaps.map((_, idx) => (
