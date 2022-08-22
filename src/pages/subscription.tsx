@@ -63,7 +63,7 @@ const SubscriptionPage: NextPageWithLayout = () => {
             onValueChange={(value) => setPlan(value as PlanEnum)}
           >
             <ToggleGroup.Item value={PlanEnum.Monthly}>Pay monthly</ToggleGroup.Item>
-            <ToggleGroup.Item value={PlanEnum.Annualy}>Pay annualy</ToggleGroup.Item>
+            <ToggleGroup.Item value={PlanEnum.Annualy}>Pay annually</ToggleGroup.Item>
           </ToggleGroup>
         </div>
       </div>
