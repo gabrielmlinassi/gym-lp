@@ -17,12 +17,11 @@ api.interceptors.request.use(async (config) => {
 });
 
 api.interceptors.response.use(async (response) => {
-  if (response.status === 401) {
-    await signOut();
-    // log to sentry?
-  } else if (response.status === 404) {
-    Router.push('/404');
-  } else if (response.status === 500) {
+  /**
+   * As we are using GraphQL and it's returning 200 for all responses,
+   * including errors, the only exceptions that may be thrown are of status 5xx
+   */
+  if (response.status.toString().startsWith('5')) {
     Router.push('/500');
   }
   return response;
