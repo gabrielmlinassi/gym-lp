@@ -32,7 +32,7 @@ const s = {
 const Logo = ({ variant = 'mark', size = 'responsive', noRedirect }: LogoProps) => {
   const comp = (
     <div className={cnMerge(s.root, s.sizes[`${variant}.${size}`])}>
-      <NextImage src={pathByVariant[variant]} />
+      <NextImage src={pathByVariant[variant]} quality={100} />
     </div>
   );
   return noRedirect ? comp : <WithRedirect>{comp}</WithRedirect>;

@@ -8,7 +8,6 @@ import { signIn } from 'next-auth/react';
 import Button from 'components/button';
 import TextField from 'components/text-field';
 import Text from 'components/Text';
-import OAuth2 from '@forms/OAuth2';
 import { ErrorIcon } from '@icons/ErrorIcon';
 
 type SignInFormProps = {

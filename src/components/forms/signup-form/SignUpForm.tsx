@@ -10,7 +10,6 @@ import Button from 'components/button';
 import TextField from 'components/text-field';
 import Checkbox from 'components/checkbox';
 import Text from 'components/Text';
-import OAuth2 from '@forms/OAuth2';
 
 type SignUpFormProps = {
   samePageRouting?: boolean;
