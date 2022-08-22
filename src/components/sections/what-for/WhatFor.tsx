@@ -14,6 +14,7 @@ const WhatFor = () => {
       <div
         className="absolute inset-0 -inset-y-32 z-10"
         style={{
+          // TODO: Find a TW way of doing it..
           background: 'linear-gradient(to bottom, rgba(37, 42, 51, 0) 50%, #252A33 100%)',
         }}
       />
