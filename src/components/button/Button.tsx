@@ -16,9 +16,9 @@ const s = {
   fullWidth: /*tw:*/ `w-full`,
   variants: {
     'filled.primary': /*tw:*/ `bg-yellow-500 text-white hover:bg-yellow-550`,
-    'filled.secondary': /*tw:*/ `bg-[#373E4B] text-[#97A3B7] hover:bg-[#343A47]`,
+    'filled.secondary': /*tw:*/ `bg-gray-475 text-gray-300 hover:bg-gray-450`,
     'outlined.primary': /*tw:*/ `border border-yellow-500 text-yellow-500`,
-    'outlined.secondary': /*tw:*/ `border border-[#373E4B] text-[#373E4B]`,
+    'outlined.secondary': /*tw:*/ `border border-gray-475 text-gray-475`,
   },
   sizes: {
     base: /*tw:*/ `px-8 py-3 md:px-8 md:py-3`,
@@ -26,7 +26,7 @@ const s = {
   },
   spinner: {
     primary: /*tw:*/ `fill-yellow-600 text-white`,
-    secondary: /*tw:*/ `fill-[#292e38] text-white`,
+    secondary: /*tw:*/ `fill-gray-500 text-white`,
   },
 };
 

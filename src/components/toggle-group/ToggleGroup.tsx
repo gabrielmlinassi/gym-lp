@@ -2,8 +2,8 @@ import React from 'react';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 
 const s = {
-  toggle: /*tw:*/ `bg-[#1E2229] p-2 inline-flex rounded-3xl`,
-  toggleItem: /*tw:*/ `rounded-2xl py-3 px-6 text-white font-proximaNova rdx-state-on:bg-[#4A5465]`,
+  toggle: /*tw:*/ `bg-gray-600 p-2 inline-flex rounded-3xl`,
+  toggleItem: /*tw:*/ `rounded-2xl py-3 px-6 text-white font-proximaNova rdx-state-on:bg-gray-400`,
 };
 
 type ToggleGroupRootProps = {

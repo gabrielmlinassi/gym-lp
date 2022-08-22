@@ -69,7 +69,7 @@ const SubscriptionPage: NextPageWithLayout = () => {
       </div>
       <div className="relative -mt-24">
         <Container variant="inner">
-          <div className="flex flex-col overflow-hidden rounded-[32px] bg-[#1E2229] lg:flex-row">
+          <div className="flex flex-col overflow-hidden rounded-[32px] bg-gray-600 lg:flex-row">
             <div className="grow p-8 sm:p-16">
               <h1 className="text-yellow-500">10% off</h1>
               <h5>
@@ -104,12 +104,12 @@ const SubscriptionPage: NextPageWithLayout = () => {
                 ))}
               </div>
             </div>
-            <div className="flex flex-shrink-0 flex-col items-center justify-center bg-[#373E4B] p-8 sm:p-16 lg:max-w-[400px]">
+            <div className="flex flex-shrink-0 flex-col items-center justify-center bg-gray-475 p-8 sm:p-16 lg:max-w-[400px]">
               <div className="flex items-end gap-2">
                 <h1>$29*</h1>
-                <h2 className="text-[#97A3B7]">$39</h2>
+                <h2 className="text-gray-300">$39</h2>
               </div>
-              <Text size="base" className="mt-2 text-center text-[#CCD4E2]">
+              <Text size="base" className="mt-2 text-center text-gray-200">
                 * Early bird pricing.
                 <br /> Subscription will increase to{' '}
                 <span className="text-white">$39</span> after your first month.

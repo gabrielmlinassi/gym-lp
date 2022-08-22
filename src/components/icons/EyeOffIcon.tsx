@@ -9,7 +9,7 @@ const EyeOffIcon = ({ className, ...props }: SVGProps<SVGSVGElement>) => {
       stroke="currentColor"
       strokeWidth="2"
       fill="none"
-      className={twMerge('h-6 w-6 text-[#97A3B7]', className)}
+      className={twMerge('h-6 w-6 text-gray-300', className)}
       {...props}
     >
       <path

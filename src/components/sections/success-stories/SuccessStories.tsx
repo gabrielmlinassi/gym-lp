@@ -23,7 +23,7 @@ const SuccessStories = () => {
           </Text>
         </div>
       </Container>
-      <div className="mt-20 bg-[#373E4B] py-14">
+      <div className="mt-20 bg-gray-475 py-14">
         <Container variant="inner" className="h-full">
           <div className="flex h-full flex-wrap items-center justify-center gap-8 sm:flex-nowrap md:gap-16">
             <NextImage src={logoNcaa} />

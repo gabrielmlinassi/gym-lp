@@ -6,8 +6,8 @@ type CheckboxProps = {
 } & Omit<React.ComponentProps<'input'>, 'type'>;
 
 const s = {
-  input: /*tw:*/ `h-6 w-6 rounded-lg border-[#4A5465] mt-0.5 bg-[#252932] text-yellow-500 checked:bg-yellow-500 hover:ring-0 focus:ring-0`,
-  label: /*tw:*/ `select-none font-proximaNova font-normal text-[#F8F8F9]`,
+  input: /*tw:*/ `h-6 w-6 rounded-lg border-gray-400 mt-0.5 bg-gray-550 text-yellow-500 checked:bg-yellow-500 hover:ring-0 focus:ring-0`,
+  label: /*tw:*/ `select-none font-proximaNova font-normal text-gray-100`,
 };
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(

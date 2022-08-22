@@ -30,25 +30,25 @@ const AccountPage: NextPageWithLayout = () => {
       </div>
       <div className="relative -mt-12 sm:-mt-24">
         <Container variant="inner">
-          <div className="mx-auto flex max-w-[640px] flex-col items-center overflow-hidden rounded-[32px] bg-[#1E2229] p-8 sm:p-16">
+          <div className="mx-auto flex max-w-[640px] flex-col items-center overflow-hidden rounded-[32px] bg-gray-600 p-8 sm:p-16">
             <div className="flex flex-col items-center justify-center sm:flex-row sm:items-baseline">
               <h1 className="text-yellow-500">$39</h1>
               <h5>
                 <span className="hidden sm:inline-block">/</span>
                 <span className="inline-block sm:hidden">per</span> month{' '}
-                <span className="text-[#97A3B7]">paid monthly</span>
+                <span className="text-gray-300">paid monthly</span>
               </h5>
             </div>
             <Text size="md" className="mt-2 text-center font-normal">
               Your next payment is on{' '}
               <span className="block text-white sm:inline-block">September 29, 2022</span>
             </Text>
-            <div className="mt-8 flex w-full gap-4 rounded-2xl border border-[#373E4B] bg-[#252932] p-4">
+            <div className="mt-8 flex w-full gap-4 rounded-2xl border border-gray-475 bg-gray-550 p-4">
               <CardIcon className="flex-shrink-0" />
               <div className="flex w-full flex-col justify-between gap-0 sm:flex-row sm:gap-4">
                 <div className="flex items-center gap-4 font-semibold text-white">
                   <span>
-                    <span className="text-[#97A3B7]">Visa ending in</span> 4242
+                    <span className="text-gray-300">Visa ending in</span> 4242
                   </span>
                 </div>
                 <div className="font-semibold text-yellow-500">

@@ -4,7 +4,7 @@ import Text from 'components/Text';
 
 const Footer = () => {
   return (
-    <div className="bg-[#1E2229]">
+    <div className="bg-gray-600">
       <Container variant="inner">
         <footer className="flex flex-col items-center justify-between gap-3 py-8 sm:flex-row sm:gap-0">
           <Text size="base">

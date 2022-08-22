@@ -23,7 +23,7 @@ const classes = {
     sm: /*tw:*/ `h-7 w-7`,
   },
   variants: {
-    filled: /*tw:*/ `bg-[#252932] border border-[#4A5465] hover:bg-black hover:bg-opacity-5`,
+    filled: /*tw:*/ `bg-gray-550 border border-gray-400 hover:bg-black hover:bg-opacity-5`,
     subtle: /*tw:*/ `hover:bg-black hover:bg-opacity-10`,
   },
 };

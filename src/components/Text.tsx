@@ -8,7 +8,7 @@ type TextProps = {
 };
 
 const s = {
-  root: /*tw:*/ `font-proximaNova font-normal text-[#CCD4E2]`,
+  root: /*tw:*/ `font-proximaNova font-normal text-gray-200`,
   sizes: {
     base: /*tw:*/ `text-base`, // 16px
     md: /*tw:*/ `text-base leading-snug sm:text-xl sm:leading-normal`, // 20px

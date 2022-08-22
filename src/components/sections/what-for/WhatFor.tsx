@@ -25,7 +25,7 @@ const WhatFor = () => {
           {data.map(({ Icon, heading, text }, i) => (
             <div key={i} className="flex gap-4">
               <div>
-                <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-[#1E2229] p-4 lg:h-20 lg:w-20">
+                <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-gray-600 p-4 lg:h-20 lg:w-20">
                   <Icon className="h-full w-full" />
                 </div>
               </div>

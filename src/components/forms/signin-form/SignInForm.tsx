@@ -95,9 +95,9 @@ const SignInForm = ({ samePageRouting = true, autoFocus = true }: SignInFormProp
       </div>
       <div className="mt-6">
         <div className="flex items-center gap-2">
-          <hr className="w-full border-[#4A5465]" />
+          <hr className="w-full border-gray-400" />
           <span className="font-industry text-white">OR</span>
-          <hr className="w-full border-[#4A5465]" />
+          <hr className="w-full border-gray-400" />
         </div>
       </div>
       <OAuth2 />

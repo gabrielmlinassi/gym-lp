@@ -71,8 +71,8 @@ const Screenshots = () => {
                 className="cursor-pointer select-none"
                 onClick={() => onItemClick(screenIdx)}
               >
-                <h3 className={active ? 'text-white' : 'text-[#4A5465]'}>{heading}</h3>
-                <Text size="md" className={active ? 'text-[#CCD4E2]' : 'text-[#4A5465]'}>
+                <h3 className={active ? 'text-white' : 'text-gray-400'}>{heading}</h3>
+                <Text size="md" className={active ? 'text-gray-200' : 'text-gray-400'}>
                   {text}
                 </Text>
               </div>
@@ -128,7 +128,7 @@ const Screenshots = () => {
                 key={dotIdx}
                 className={cn([
                   'h-2 w-2 rounded-full',
-                  dotIdx == activeDotIdx ? 'bg-yellow-500' : 'bg-[#97A3B7]',
+                  dotIdx == activeDotIdx ? 'bg-yellow-500' : 'bg-gray-300',
                 ])}
               />
             ))}

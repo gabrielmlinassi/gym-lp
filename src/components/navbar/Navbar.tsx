@@ -46,7 +46,7 @@ const UserMenu = () => {
   return (
     <div className="flex-shrink-0">
       {me && (
-        <span className="mr-5 hidden font-semibold text-[#CCD4E2] sm:inline-block">
+        <span className="mr-5 hidden font-semibold text-gray-200 sm:inline-block">
           Logged in as <span className="text-white">{me.user.name}</span>
         </span>
       )}
