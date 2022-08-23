@@ -37,7 +37,7 @@ const HowItWorks = () => {
       </div>
       <div className="relative mt-36">
         <Container variant="inner" className="relative md:static">
-          <div className="absolute left-0 right-0 top-[80%] bottom-0 z-0 h-screen md:-top-8">
+          <div className="absolute left-0 right-0 top-[80%] bottom-0 z-0 h-screen md:-top-8 3xl:h-[70vh]">
             <NextImage
               src={pattern}
               layout="fill"

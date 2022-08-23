@@ -32,6 +32,9 @@ module.exports = {
         'fade-in': 'fade-in 0.2s ease',
         'fade-out': 'fade-out 0.2s ease',
       },
+      screens: {
+        '3xl': '2160px',
+      },
     },
     colors: {
       transparent: 'transparent',
