@@ -1,1 +1,1 @@
-Contains all the functions related to data fetching.
+Contains all the reusable functions related to data fetching.
